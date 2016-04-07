@@ -1,27 +1,27 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.UIManager;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.Timer;
-import javax.swing.JButton;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.util.Scanner;
-import java.awt.event.ActionEvent;
 
-public class Deposit extends JFrame {
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+
+public class Withdraw extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -29,11 +29,11 @@ public class Deposit extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void newDeposit() {
+	public static void newWithdraw() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Deposit frame = new Deposit();
+					Withdraw frame = new Withdraw();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +45,7 @@ public class Deposit extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Deposit() {
+	public Withdraw() {
 		setBackground(UIManager.getColor("scrollbar"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 613, 430);
@@ -73,33 +73,33 @@ public class Deposit extends JFrame {
 		panel.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblDepositComplete = new JLabel("Deposit complete.");
-		lblDepositComplete.setForeground(Color.WHITE);
-		lblDepositComplete.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblDepositComplete.setBounds(136, 89, 158, 31);
+		JLabel lblWithdrawComplete = new JLabel("Withdrawal complete.");
+		lblWithdrawComplete.setForeground(Color.WHITE);
+		lblWithdrawComplete.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblWithdrawComplete.setBounds(136, 89, 158, 31);
 		
 		JLabel lblBadInput = new JLabel("Invalid input.");
 		lblBadInput.setForeground(Color.WHITE);
 		lblBadInput.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblBadInput.setBounds(136, 89, 158, 31);
 		
-		JButton btnDeposit = new JButton("Deposit");
-		btnDeposit.addActionListener(new ActionListener() {
+		JButton btnWithdraw = new JButton("Withdraw");
+		btnWithdraw.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*Timer timer = new Timer(50, this);
 				timer.setInitialDelay(1000);
 				timer.setRepeats(false);*/
-				String toDeposit = textField.getText();
+				String toWithdraw = textField.getText();
 				//timer.start();
 				try	{
-					int toAdd = Integer.parseInt(toDeposit);
-					userDeposit(toAdd);
+					int toSubtract = Integer.parseInt(toWithdraw);
+					userWithdraw(toSubtract);
 					textField.setText("");
-					panel.add(lblDepositComplete);
+					panel.add(lblWithdrawComplete);
 					panel.validate();
 					panel.repaint();
 					/*timer.start();
-					panel.remove(lblDepositComplete);
+					panel.remove(lblWithdrawComplete);
 					panel.validate();
 					panel.repaint();*/
 				}
@@ -116,10 +116,10 @@ public class Deposit extends JFrame {
 				
 			}
 		});
-		btnDeposit.setForeground(Color.WHITE);
-		btnDeposit.setBackground(new Color(37,192,84));
-		btnDeposit.setBounds(138, 117, 89, 23);
-		panel.add(btnDeposit);
+		btnWithdraw.setForeground(Color.WHITE);
+		btnWithdraw.setBackground(new Color(37,192,84));
+		btnWithdraw.setBounds(138, 117, 89, 23);
+		panel.add(btnWithdraw);
 		
 		JButton btnCancel = new JButton("Return");
 		btnCancel.addActionListener(new ActionListener() {
@@ -164,7 +164,7 @@ public class Deposit extends JFrame {
 		contentPane.add(lblNewLabel);
 	
 	}
-	void userDeposit(int toAdd)		//NOT ALL CODE BELONGS IN THIS SECTION
+	void userWithdraw(int toSubtract)		//NOT ALL CODE BELONGS IN THIS SECTION
 	{								//after 3 login attempts, status is changed to inactive
 		try {						//and user cannot access account
 			Scanner input = null;
@@ -184,8 +184,8 @@ public class Deposit extends JFrame {
 				status = true;
 			else
 				status = false;
-			//Begin deposit
-			balance +=toAdd;
+			//Begin Withdraw
+			balance -=toSubtract;
 			PrintWriter output = null;
 			output = new PrintWriter(new FileOutputStream("txt/AccountInformation.txt"));
 			output.println(accountNumber);
