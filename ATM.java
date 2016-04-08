@@ -1,4 +1,3 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,23 +7,20 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.CardLayout;
-import java.awt.SystemColor;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
-import java.awt.GridLayout;
+import javax.swing.SwingConstants;
 
 public class ATM extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField accountTextField;
 	private JPasswordField passwordField;
-	private JTextField textField;
+	private JTextField insertAmount;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -88,17 +84,154 @@ public class ATM extends JFrame {
 		MainMenu.setBackground(new Color(0, 0, 0, 0));
 		panel_1.add(MainMenu);
 		
+		JPanel Deposit = new JPanel();
+		Deposit.setLayout(null);
+		Deposit.setOpaque(true);
+		Deposit.setBackground(new Color(0, 0, 0, 0));
+		panel_1.add(Deposit);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setLayout(null);
+		panel_2.setBackground(new Color(0, 99, 147));
+		panel_2.setBounds(523, 200, 988, 753);
+		Deposit.add(panel_2);
+		
+		JButton button = new JButton("Enter");
+		button.setForeground(Color.WHITE);
+		button.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
+		button.setBackground(new Color(37, 192, 84));
+		button.setBounds(57, 464, 420, 123);
+		panel_2.add(button);
+		
+		JButton button_1 = new JButton("Cancel");
+		button_1.setForeground(Color.WHITE);
+		button_1.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
+		button_1.setBackground(new Color(220, 20, 60));
+		button_1.setBounds(518, 464, 408, 123);
+		panel_2.add(button_1);
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				insertAmount.setText("");
+				panel_1.removeAll();
+				panel_1.repaint();
+				panel_1.revalidate();
+				
+				panel_1.add(MainMenu);
+				panel_1.repaint();
+			    panel_1.revalidate();
+				
+			}
+		});
+		
+		
+		insertAmount = new JTextField();
+		insertAmount.setBounds(224, 229, 551, 108);
+		panel_2.add(insertAmount);
+		insertAmount.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("$");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setBounds(145, 229, 79, 108);
+		panel_2.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Insert Amount");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
+		lblNewLabel_1.setBounds(280, 135, 433, 66);
+		panel_2.add(lblNewLabel_1);
+		
+		JPanel withdraw = new JPanel();
+		withdraw.setLayout(null);
+		withdraw.setOpaque(true);
+		withdraw.setBackground(new Color(0, 0, 0, 0));
+		panel_1.add(withdraw);
+		
+		JLabel lblNewLabel_2 = new JLabel("Select an Amount");
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setFont(new Font("Arial Unicode MS", Font.BOLD, 70));
+		lblNewLabel_2.setBounds(723, 99, 662, 116);
+		withdraw.add(lblNewLabel_2);
+		
+		JButton btn$20 = new JButton("$20");
+		btn$20.setForeground(Color.WHITE);
+		btn$20.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
+		btn$20.setBackground(new Color(0, 99, 147));
+		btn$20.setBounds(287, 286, 437, 161);
+		withdraw.add(btn$20);
+		
+		JButton btn$40 = new JButton("$40");
+		btn$40.setForeground(Color.WHITE);
+		btn$40.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
+		btn$40.setBackground(new Color(0, 99, 147));
+		btn$40.setBounds(839, 286, 437, 161);
+		withdraw.add(btn$40);
+		
+		JButton btn$60 = new JButton("$60");
+		btn$60.setForeground(Color.WHITE);
+		btn$60.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
+		btn$60.setBackground(new Color(0, 99, 147));
+		btn$60.setBounds(1381, 286, 437, 161);
+		withdraw.add(btn$60);
+		
+		JButton btn$80 = new JButton("$80");
+		btn$80.setForeground(Color.WHITE);
+		btn$80.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
+		btn$80.setBackground(new Color(0, 99, 147));
+		btn$80.setBounds(287, 539, 437, 161);
+		withdraw.add(btn$80);
+		
+		JButton btn$100 = new JButton("$100");
+		btn$100.setForeground(Color.WHITE);
+		btn$100.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
+		btn$100.setBackground(new Color(0, 99, 147));
+		btn$100.setBounds(839, 539, 437, 161);
+		withdraw.add(btn$100);
+		
+		JButton other = new JButton("<html>Other<br /> Amount</html>");
+		other.setForeground(Color.WHITE);
+		other.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
+		other.setBackground(new Color(0, 99, 147));
+		other.setBounds(1381, 539, 437, 161);
+		withdraw.add(other);
+		
+		JButton btnMainMenu = new JButton("Main Menu");
+		btnMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				panel_1.removeAll();
+				panel_1.repaint();
+				panel_1.revalidate();
+						
+			    panel_1.add(MainMenu);
+				panel_1.repaint();
+				panel_1.revalidate();
+			}
+		});
+		btnMainMenu.setForeground(Color.WHITE);
+		btnMainMenu.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
+		btnMainMenu.setBackground(new Color(0, 99, 147));
+		btnMainMenu.setBounds(1381, 787, 437, 166);
+		withdraw.add(btnMainMenu);
+		
 		JPanel balance = new JPanel();
 		balance.setLayout(null);
 		balance.setOpaque(true);
 		balance.setBackground(new Color(0, 0, 0, 0));
 		panel_1.add(balance);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("SansSerif", Font.PLAIN, 50));
-		textField.setColumns(10);
-		textField.setBounds(457, 329, 551, 108);
-		balance.add(textField);
+		JPanel transfer = new JPanel();
+		transfer.setLayout(null);
+		transfer.setOpaque(true);
+		transfer.setBackground(new Color(0, 0, 0, 0));
+		panel_1.add(transfer);
+		
+		JPanel changePassword = new JPanel();
+		changePassword.setLayout(null);
+		changePassword.setOpaque(true);
+		changePassword.setBackground(new Color(0, 0, 0, 0));
+		panel_1.add(changePassword);
+		
 		
 		JLabel lblAccount = new JLabel("Account Number");
 		lblAccount.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
@@ -184,6 +317,9 @@ public class ATM extends JFrame {
 		JButton btnBalance = new JButton("Balance");
 		btnBalance.setBounds(627, 551, 437, 154);
 		MainMenu.add(btnBalance);
+		btnBalance.setForeground(Color.WHITE);
+		btnBalance.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
+		btnBalance.setBackground(new Color(0, 99, 147));
 		btnBalance.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_1.removeAll();
@@ -194,10 +330,8 @@ public class ATM extends JFrame {
 				panel_1.repaint();
 			    panel_1.revalidate();
 			}
-		});
-		btnBalance.setForeground(Color.WHITE);
-		btnBalance.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
-		btnBalance.setBackground(new Color(0, 99, 147));
+		});	
+		
 		
 		JButton btnWithdraw = new JButton("Withdraw");
 		btnWithdraw.setBounds(1237, 329, 437, 154);
@@ -205,6 +339,19 @@ public class ATM extends JFrame {
 		btnWithdraw.setForeground(Color.WHITE);
 		btnWithdraw.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
 		btnWithdraw.setBackground(new Color(0, 99, 147));
+		btnWithdraw.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_1.removeAll();
+				panel_1.repaint();
+				panel_1.revalidate();
+				
+				panel_1.add(withdraw);
+				panel_1.repaint();
+			    panel_1.revalidate();
+			}
+		});
+		
+		
 		
 		JButton btnDeposit = new JButton("Deposit");
 		btnDeposit.setBounds(627, 330, 437, 153);
@@ -212,6 +359,18 @@ public class ATM extends JFrame {
 		btnDeposit.setForeground(Color.WHITE);
 		btnDeposit.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
 		btnDeposit.setBackground(new Color(0, 99, 147));
+		btnDeposit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				panel_1.removeAll();
+				panel_1.repaint();
+				panel_1.revalidate();
+				
+				panel_1.add(Deposit);
+				panel_1.repaint();
+			    panel_1.revalidate();
+					
+			}
+		});
 		
 		JButton btnTransfer = new JButton("Transfer");
 		btnTransfer.setBounds(1237, 551, 437, 154);
@@ -219,6 +378,19 @@ public class ATM extends JFrame {
 		btnTransfer.setForeground(Color.WHITE);
 		btnTransfer.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
 		btnTransfer.setBackground(new Color(0, 99, 147));
+		btnTransfer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_1.removeAll();
+				panel_1.repaint();
+				panel_1.revalidate();
+				
+				panel_1.add(transfer);
+				panel_1.repaint();
+			    panel_1.revalidate();
+			}
+		});
+		
+		
 		
 		JButton btnChangePass = new JButton("<html>Change<br /> Password</html>");
 		btnChangePass.setBounds(627, 789, 437, 153);
@@ -226,10 +398,24 @@ public class ATM extends JFrame {
 		btnChangePass.setForeground(Color.WHITE);
 		btnChangePass.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
 		btnChangePass.setBackground(new Color(0, 99, 147));
+		btnChangePass.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_1.removeAll();
+				panel_1.repaint();
+				panel_1.revalidate();
+				
+				panel_1.add(changePassword);
+				panel_1.repaint();
+			    panel_1.revalidate();
+			}
+		});
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setBounds(1237, 788, 437, 154);
 		MainMenu.add(btnLogout);
+		btnLogout.setForeground(Color.WHITE);
+		btnLogout.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
+		btnLogout.setBackground(new Color(0, 99, 147));
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_1.removeAll();
@@ -241,9 +427,6 @@ public class ATM extends JFrame {
 			    panel_1.revalidate();
 			}
 		});
-		btnLogout.setForeground(Color.WHITE);
-		btnLogout.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
-		btnLogout.setBackground(new Color(0, 99, 147));
 		
 		JLabel wallpaper = new JLabel("");
 		wallpaper.setIcon(new ImageIcon("C:\\Users\\janiermrz\\Desktop\\COSC 1320\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
