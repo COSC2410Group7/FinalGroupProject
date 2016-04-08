@@ -39,7 +39,7 @@ public class ATM extends JFrame {
 		setTitle("ATM");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 2134, 1466);
+		setBounds(100, 100, 2128, 1470);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -58,7 +58,7 @@ public class ATM extends JFrame {
 		JLabel BankInitials = new JLabel("G7B");
 		BankInitials.setForeground(new Color(0, 74, 111));
 		BankInitials.setFont(new Font("Baskerville Old Face", Font.BOLD, 90));
-		BankInitials.setBounds(167, 68, 244, 77);
+		BankInitials.setBounds(167, 68, 256, 81);
 		panel.add(BankInitials);
 		
 		JLabel BankName = new JLabel("Group7Bank");
@@ -253,7 +253,7 @@ public class ATM extends JFrame {
 		
 		JPanel blue = new JPanel();
 		blue.setBackground(new Color(0, 99, 147));
-		blue.setBounds(544, 125, 988, 753);
+		blue.setBounds(544, 125, 986, 755);
 		login.add(blue);
 		blue.setLayout(null);
 		
