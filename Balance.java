@@ -29,7 +29,7 @@ public class Balance extends ATM {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0,99,147));
-		panel.setBounds(151, 73, 482, 265);
+		panel.setBounds(151, 63, 482, 285);
 		contentPaneBalance.add(panel);
 		panel.setLayout(null);
 		
@@ -42,27 +42,27 @@ public class Balance extends ATM {
 		
 		JLabel lblAmount = new JLabel(accountInfo[3]);
 		lblAmount.setForeground(Color.WHITE);
-		lblAmount.setBounds(141, 75, 173, 28);
+		lblAmount.setBounds(184, 81, 186, 28);
 		panel.add(lblAmount);
 		lblAmount.setHorizontalAlignment(SwingConstants.LEFT);
 		lblAmount.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		
 		JLabel lblSign = new JLabel("$");
 		lblSign.setForeground(Color.WHITE);
-		lblSign.setBounds(103, 60, 43, 59);
+		lblSign.setBounds(142, 66, 43, 59);
 		panel.add(lblSign);
 		lblSign.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSign.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		
 		JLabel lblOriginalBalance = new JLabel("Original:");
 		lblOriginalBalance.setForeground(Color.WHITE);
-		lblOriginalBalance.setBounds(0, 65, 114, 49);
+		lblOriginalBalance.setBounds(34, 71, 114, 49);
 		panel.add(lblOriginalBalance);
 		lblOriginalBalance.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblOriginalBalance.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		textField = new JTextField();
-		textField.setBounds(141, 114, 202, 28);
+		textField.setBounds(184, 114, 186, 28);
 		panel.add(textField);
 		textField.setHorizontalAlignment(SwingConstants.LEFT);
 		textField.setEditable(false);
@@ -71,7 +71,7 @@ public class Balance extends ATM {
 		
 		JLabel label = new JLabel("$");
 		label.setForeground(Color.WHITE);
-		label.setBounds(103, 99, 43, 59);
+		label.setBounds(142, 99, 43, 59);
 		panel.add(label);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -85,7 +85,7 @@ public class Balance extends ATM {
 		
 		JButton btnShowBalance = new JButton("<html> Show </br> Balance </html>");
 		btnShowBalance.setForeground(Color.WHITE);
-		btnShowBalance.setBounds(140, 153, 202, 49);
+		btnShowBalance.setBounds(142, 167, 202, 49);
 		panel.add(btnShowBalance);
 		btnShowBalance.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -97,7 +97,7 @@ public class Balance extends ATM {
 		
 		JButton btnReturn = new JButton("Return");
 		btnReturn.setForeground(Color.WHITE);
-		btnReturn.setBounds(181, 213, 119, 39);
+		btnReturn.setBounds(183, 227, 119, 39);
 		panel.add(btnReturn);
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
