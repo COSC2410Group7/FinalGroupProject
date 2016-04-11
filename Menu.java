@@ -1,113 +1,139 @@
-import java.awt.EventQueue;
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import java.awt.Color;
-import javax.swing.JButton;
-import java.awt.Font;
 import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
-
-public class Menu {
-
-	private JFrame frame;
-
-	public static void Transaction() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Menu window = new Menu();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+public class Menu extends ATM{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JPanel contentPaneMenu;
 	public Menu() {
-		initialize();
-	}
-
-	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(0, 128, 192));
-		frame.setBounds(1000, 1000, 1910, 1244);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-				
-		JLabel lblNewLabel = new JLabel("");
-		Image wallpaper= new ImageIcon (this.getClass().getResource("blue.jpg")).getImage();
+		setTitle("Menu");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(0, 0, 800, 450);
+		contentPaneMenu = new JPanel();
+		contentPaneMenu.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPaneMenu);
+		contentPaneMenu.setLayout(null);
 		
-		JLabel lblMainMenu = new JLabel("Main Menu");
-		lblMainMenu.setForeground(Color.WHITE);
-		lblMainMenu.setFont(new Font("Arial Unicode MS", Font.PLAIN, 60));
-		lblMainMenu.setBounds(26, 80, 336, 72);
-		frame.getContentPane().add(lblMainMenu);
-		
-		JLabel lblWelcomeToGroupbank = new JLabel("Welcome to Group7Bank");
-		lblWelcomeToGroupbank.setForeground(Color.WHITE);
-		lblWelcomeToGroupbank.setFont(new Font("Arial Unicode MS", Font.PLAIN, 60));
-		lblWelcomeToGroupbank.setBounds(495, 80, 668, 72);
-		frame.getContentPane().add(lblWelcomeToGroupbank);
-		
-		JLabel lblSelectATransaction = new JLabel("Select a Transaction");
-		lblSelectATransaction.setForeground(Color.WHITE);
-		lblSelectATransaction.setFont(new Font("Arial Unicode MS", Font.BOLD, 70));
-		lblSelectATransaction.setBounds(495, 170, 770, 77);
-		frame.getContentPane().add(lblSelectATransaction);
-		
-		JButton btnTransfer = new JButton("Deposit");
-		btnTransfer.setForeground(Color.WHITE);
-		btnTransfer.setBackground(new Color(0,99,147));
-		btnTransfer.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
-		btnTransfer.setBounds(495, 603, 428, 158);
-		frame.getContentPane().add(btnTransfer);
-		
-		JButton btnTransfer_1 = new JButton("Transfer");
-		btnTransfer_1.setBackground(new Color(0,99,147));
-		btnTransfer_1.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
-		btnTransfer_1.setForeground(Color.WHITE);
-		btnTransfer_1.setBounds(1091, 603, 421, 158);
-		frame.getContentPane().add(btnTransfer_1);
+		JLabel lblChoose = new JLabel("What would you like to do?");
+		lblChoose.setForeground(Color.WHITE);
+		lblChoose.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblChoose.setHorizontalAlignment(SwingConstants.CENTER);
+		lblChoose.setBounds(202, 78, 380, 37);
+		contentPaneMenu.add(lblChoose);
 		
 		JButton btnBalance = new JButton("Balance");
-		btnBalance.setBackground(new Color(0,99,147));
 		btnBalance.setForeground(Color.WHITE);
-		btnBalance.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
-		btnBalance.setBounds(495, 346, 428, 158);
-		frame.getContentPane().add(btnBalance);
+		btnBalance.setBackground(new Color(0, 99, 147));
+		btnBalance.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				login.panel.removeAll();
+				login.panel.add(balance.contentPaneBalance);
+				login.panel.revalidate();
+				login.panel.repaint();
+			}
+		});
+		btnBalance.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnBalance.setBounds(222, 126, 162, 82);
+		contentPaneMenu.add(btnBalance);
+		
+		JButton btnTransfer = new JButton("Transfer");
+		btnTransfer.setForeground(Color.WHITE);
+		btnTransfer.setBackground(new Color(0, 99, 147));
+		btnTransfer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login.panel.removeAll();
+				login.panel.add(transfer.contentPaneTransfer);
+				login.panel.revalidate();
+				login.panel.repaint();
+			}
+		});
+		btnTransfer.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnTransfer.setBounds(402, 126, 162, 82);
+		contentPaneMenu.add(btnTransfer);
+		
+		JButton btnDeposit = new JButton("Deposit");
+		btnDeposit.setForeground(Color.WHITE);
+		btnDeposit.setBackground(new Color(0, 99, 147));
+		btnDeposit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login.panel.removeAll();
+				login.panel.add(deposit.contentPaneDeposit);
+				login.panel.revalidate();
+				login.panel.repaint();
+			}
+		});
+		btnDeposit.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnDeposit.setBounds(220, 219, 162, 82);
+		contentPaneMenu.add(btnDeposit);
 		
 		JButton btnWithdraw = new JButton("Withdraw");
+		btnWithdraw.setBackground(new Color(0, 99, 147));
 		btnWithdraw.setForeground(Color.WHITE);
-		btnWithdraw.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
-		btnWithdraw.setBackground(new Color(0,99,147));
-		btnWithdraw.setBounds(1091, 346, 421, 158);
-		frame.getContentPane().add(btnWithdraw);
+		btnWithdraw.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login.panel.removeAll();
+				login.panel.add(withdraw.contentPaneWithdraw);
+				login.panel.revalidate();
+				login.panel.repaint();
+			}
+		});
+		btnWithdraw.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnWithdraw.setBounds(402, 219, 162, 82);
+		contentPaneMenu.add(btnWithdraw);
+		
+		JButton btnChangePW = new JButton("<html>Change</br> Password </html>");
+		btnChangePW.setVerticalAlignment(SwingConstants.TOP);
+		btnChangePW.setForeground(Color.WHITE);
+		btnChangePW.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login.panel.removeAll();
+				login.panel.add(changePW.contentPaneChangePW);
+				login.panel.revalidate();
+				login.panel.repaint();
+			}
+		});
+		btnChangePW.setBackground(new Color(255, 204, 0));
+		btnChangePW.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnChangePW.setBounds(222, 312, 162, 82);
+		contentPaneMenu.add(btnChangePW);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBackground(new Color(220, 20, 60));
 		btnLogout.setForeground(Color.WHITE);
-		btnLogout.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
-		btnLogout.setBounds(1398, 970, 418, 158);
-		frame.getContentPane().add(btnLogout);
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login.panel.removeAll();
+				login.panel.add(login.contentPaneLogin);
+				login.panel.revalidate();
+				login.panel.repaint();
+			}
+		});
+		btnLogout.setBackground(new Color(255, 0, 51));
+		btnLogout.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnLogout.setBounds(402, 312, 162, 82);
+		contentPaneMenu.add(btnLogout);
 		
-		JButton btnChangePassword = new JButton("<html>Change<br /> Password</html>");
-		btnChangePassword.setBackground(new Color(226,205,16));
-		btnChangePassword.setForeground(Color.WHITE);
-		btnChangePassword.setFont(new Font("Arial Unicode MS", Font.BOLD, 60));
-		btnChangePassword.setBounds(36, 970, 428, 158);
-		frame.getContentPane().add(btnChangePassword);
+		JLabel lblGreeting = new JLabel("Hello "+accountInfo[2]+" "+accountInfo[1]+",");
+		lblGreeting.setForeground(Color.WHITE);
+		lblGreeting.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGreeting.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		lblGreeting.setBounds(50, 11, 700, 56);
+		contentPaneMenu.add(lblGreeting);
 		
-		
-		lblNewLabel.setIcon(new ImageIcon(wallpaper));
-		lblNewLabel.setBounds(0, 0, 1878, 1156);
-		frame.getContentPane().add(lblNewLabel);
-		
-		
-		
-		
+		JLabel lblBackground = new JLabel("");
+		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		lblBackground.setBounds(0, 0, 784, 411);
+		contentPaneMenu.add(lblBackground);
 	}
+
 }

@@ -1,0 +1,377 @@
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.Timer;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.JPasswordField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.awt.CardLayout;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
+public class Login extends ATM {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JTextField accountField;
+	private JPasswordField passwordField;
+	private JLabel lblError;
+	private int attemptCount=0;
+	public JPanel panel;
+	JPanel contentPaneLogin;
+	private JLabel lblYourAccountIs;
+	private JLabel lblBackground;
+	public Login() {
+		setForeground(new Color(0, 153, 204));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		setTitle("ATM");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(500, 250, 800, 450);
+		panel = new JPanel();
+		panel.setBorder(new EmptyBorder(0, 0, 0, 0));
+		setContentPane(panel);
+		panel.setLayout(new CardLayout(0, 0));
+		
+		contentPaneLogin = new JPanel();
+		panel.add(contentPaneLogin, "name_2096823609730483");
+		contentPaneLogin.setLayout(null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(0, 99, 147));
+		panel_1.setBounds(172, 84, 439, 242);
+		contentPaneLogin.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel lblAccountNumber = new JLabel("Account Number:");
+		lblAccountNumber.setBounds(26, 42, 194, 31);
+		panel_1.add(lblAccountNumber);
+		lblAccountNumber.setForeground(Color.WHITE);
+		lblAccountNumber.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		
+		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setBounds(94, 71, 121, 61);
+		panel_1.add(lblPassword);
+		lblPassword.setForeground(Color.WHITE);
+		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		
+		accountField = new JTextField();
+		accountField.setBounds(214, 47, 194, 25);
+		panel_1.add(accountField);
+		accountField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if (arg0.getKeyCode() == KeyEvent.VK_ENTER){
+					if(accountInfo[4].equals("Active")){
+						if (accountField.getText().equals(ATM.accountPW[0]) && Arrays.equals(passwordField.getPassword(), Password)){
+							login.panel.remove(contentPaneLogin);
+							login.panel.add(menu.contentPaneMenu);
+							login.panel.revalidate();
+							login.panel.repaint();
+							attemptCount=0;
+						}
+						else{
+							attemptCount++;
+							if (attemptCount == 3){
+								lblYourAccountIs.setVisible(true);
+								ActionListener erase = new ActionListener() {
+									public void actionPerformed(ActionEvent e){
+										lblYourAccountIs.setVisible(false);
+									}
+								};
+								Timer error = new Timer(10000,erase);
+								error.start();
+								error.setRepeats(false);
+								
+								String status = new String();
+								status = "Inactive";
+								accountInfo[4]=status;
+								PrintWriter writer;
+								try {
+									writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
+									BufferedWriter bwriter = new BufferedWriter(writer);
+									for(int i=0;i<5;i++){
+										bwriter.write(accountInfo[i]);
+										if(i!=4)
+											bwriter.newLine();
+									}
+									bwriter.close();
+								}
+								catch (IOException e1) {
+									// 	TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+								ActionListener recovery = new ActionListener() {
+									public void actionPerformed(ActionEvent e){
+										String status = "Active";
+										accountInfo[4]=status;
+										PrintWriter writer;
+										try{
+											writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
+											BufferedWriter bwriter = new BufferedWriter(writer);
+											for(int i=0;i<5;i++){
+												bwriter.write(accountInfo[i]);
+												if(i!=4)
+													bwriter.newLine();
+											}
+											bwriter.close();
+											attemptCount=0;
+										}
+										catch (IOException e1) {
+											// TODO Auto-generated catch block
+											e1.printStackTrace();
+										}
+									}
+								};
+								Timer changeStatus = new Timer(10000,recovery);
+								changeStatus.start();
+								changeStatus.setRepeats(false);
+							}
+							lblError.setVisible(true);
+							ActionListener erase = new ActionListener() {
+								public void actionPerformed(ActionEvent e){
+									lblError.setVisible(false);
+								}
+							};
+							Timer error = new Timer(1000,erase);
+							error.start();
+							error.setRepeats(false);
+						}
+						accountField.setText("");
+						passwordField.setText("");
+					}
+				}
+			}
+		});
+		accountField.setHorizontalAlignment(SwingConstants.LEFT);
+		accountField.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		accountField.setColumns(10);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(214, 89, 194, 25);
+		panel_1.add(passwordField);
+		passwordField.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER){
+					if(accountInfo[4].equals("Active")){
+						if (accountField.getText().equals(ATM.accountPW[0]) && Arrays.equals(passwordField.getPassword(), Password)){
+							login.panel.remove(contentPaneLogin);
+							login.panel.add(menu.contentPaneMenu);
+							login.panel.revalidate();
+							login.panel.repaint();
+							attemptCount=0;
+						}
+						else{
+							attemptCount++;
+							if (attemptCount == 3){
+								lblYourAccountIs.setVisible(true);
+								ActionListener erase = new ActionListener() {
+									public void actionPerformed(ActionEvent e){
+										lblYourAccountIs.setVisible(false);
+									}
+								};
+								Timer error = new Timer(10000,erase);
+								error.start();
+								error.setRepeats(false);
+								
+								String status = new String();
+								status = "Inactive";
+								accountInfo[4]=status;
+								PrintWriter writer;
+								try {
+									writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
+									BufferedWriter bwriter = new BufferedWriter(writer);
+									for(int i=0;i<5;i++){
+										bwriter.write(accountInfo[i]);
+										if(i!=4)
+											bwriter.newLine();
+									}
+									bwriter.close();
+								}
+								catch (IOException e1) {
+									// 	TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+								ActionListener recovery = new ActionListener() {
+									public void actionPerformed(ActionEvent e){
+										String status = "Active";
+										accountInfo[4]=status;
+										PrintWriter writer;
+										try{
+											writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
+											BufferedWriter bwriter = new BufferedWriter(writer);
+											for(int i=0;i<5;i++){
+												bwriter.write(accountInfo[i]);
+												if(i!=4)
+													bwriter.newLine();
+											}
+											bwriter.close();
+											attemptCount=0;
+										}
+										catch (IOException e1) {
+											// TODO Auto-generated catch block
+											e1.printStackTrace();
+										}
+									}
+								};
+								Timer changeStatus = new Timer(10000,recovery);
+								changeStatus.start();
+								changeStatus.setRepeats(false);
+							}
+							lblError.setVisible(true);
+							ActionListener erase = new ActionListener() {
+								public void actionPerformed(ActionEvent e){
+									lblError.setVisible(false);
+								}
+							};
+							Timer error = new Timer(1000,erase);
+							error.start();
+							error.setRepeats(false);
+						}
+						accountField.setText("");
+						passwordField.setText("");
+					}
+				}
+			}
+		});
+		passwordField.setHorizontalAlignment(SwingConstants.LEFT);
+		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		
+		lblError = new JLabel("Invalid Credentials");
+		lblError.setBounds(153, 117, 133, 25);
+		panel_1.add(lblError);
+		lblError.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblError.setForeground(new Color(255, 0, 51));
+		lblError.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		lblYourAccountIs = new JLabel("Your account is disabled for 10 seconds.");
+		lblYourAccountIs.setBounds(55, 217, 329, 25);
+		panel_1.add(lblYourAccountIs);
+		lblYourAccountIs.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblYourAccountIs.setForeground(new Color(255, 0, 0));
+		lblYourAccountIs.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.setBounds(76, 145, 144, 61);
+		panel_1.add(btnLogin);
+		btnLogin.setForeground(Color.WHITE);
+		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 45));
+		btnLogin.setBackground(new Color(51, 204, 51));
+		
+		JButton btnClear = new JButton("Clear");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				accountField.setText("");
+				passwordField.setText("");
+				
+			}
+		});
+		btnClear.setForeground(Color.WHITE);
+		btnClear.setFont(new Font("Tahoma", Font.PLAIN, 45));
+		btnClear.setBackground(Color.RED);
+		btnClear.setBounds(230, 145, 144, 61);
+		panel_1.add(btnClear);
+		
+		lblBackground = new JLabel("");
+		lblBackground.setBounds(0, 0, 784, 411);
+		contentPaneLogin.add(lblBackground);
+		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(accountInfo[4].equals("Active")){
+					if (accountField.getText().equals(ATM.accountPW[0]) && Arrays.equals(passwordField.getPassword(), Password)){
+						login.panel.remove(contentPaneLogin);
+						login.panel.add(menu.contentPaneMenu);
+						login.panel.revalidate();
+						login.panel.repaint();
+						attemptCount=0;
+					}
+					else{
+						attemptCount++;
+						if (attemptCount == 3){
+							lblYourAccountIs.setVisible(true);
+							ActionListener erase = new ActionListener() {
+								public void actionPerformed(ActionEvent e){
+									lblYourAccountIs.setVisible(false);
+								}
+							};
+							Timer error = new Timer(10000,erase);
+							error.start();
+							error.setRepeats(false);	//timer applies to actionlistener erase
+							
+							String status = new String();
+							status = "Inactive";
+							accountInfo[4]=status;
+							PrintWriter writer;
+							try {
+								writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
+								BufferedWriter bwriter = new BufferedWriter(writer);
+								for(int i=0;i<5;i++){
+									bwriter.write(accountInfo[i]);
+									if(i!=4)
+										bwriter.newLine();
+								}
+								bwriter.close();
+							}
+							catch (IOException e1) {
+								// 	TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							ActionListener recovery = new ActionListener() {
+								public void actionPerformed(ActionEvent e){
+									String status = "Active";
+									accountInfo[4]=status;
+									PrintWriter writer;
+									try{
+										writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
+										BufferedWriter bwriter = new BufferedWriter(writer);
+										for(int i=0;i<5;i++){
+											bwriter.write(accountInfo[i]);
+											if(i!=4)
+												bwriter.newLine();
+										}
+										bwriter.close();
+										attemptCount=0;
+									}
+									catch (IOException e1) {
+										// TODO Auto-generated catch block
+										e1.printStackTrace();
+									}
+								}
+							};
+							Timer changeStatus = new Timer(10000,recovery);
+							changeStatus.start();
+							changeStatus.setRepeats(false);
+						}
+						lblError.setVisible(true);
+						ActionListener erase = new ActionListener() {
+							public void actionPerformed(ActionEvent e){
+								lblError.setVisible(false);
+							}
+						};
+						Timer error = new Timer(1000,erase);
+						error.start();
+						error.setRepeats(false);
+					}
+					accountField.setText("");
+					passwordField.setText("");
+				}
+			}
+		});
+		lblYourAccountIs.setVisible(false);
+		lblError.setVisible(false);
+	}
+}
