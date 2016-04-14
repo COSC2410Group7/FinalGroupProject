@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class ChangePW extends ATM {
 
@@ -30,6 +31,7 @@ public class ChangePW extends ATM {
 	private JButton btnOK;
 	private JLabel lblInvalidPassword;
 	private JLabel lblPasswordsNoMatch;
+	private JPanel panel_1;
 
 	public ChangePW() {
 		setTitle("Change Password");
@@ -40,71 +42,37 @@ public class ChangePW extends ATM {
 		setContentPane(contentPaneChangePW);
 		contentPaneChangePW.setLayout(null);
 		
-		JLabel lblChangePassword = new JLabel("Change Password");
-		lblChangePassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblChangePassword.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		lblChangePassword.setBounds(209, 11, 380, 49);
-		contentPaneChangePW.add(lblChangePassword);
-		
-		JLabel lblCurrentPassword = new JLabel("Current Password:");
-		lblCurrentPassword.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblCurrentPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCurrentPassword.setBounds(10, 71, 359, 75);
-		contentPaneChangePW.add(lblCurrentPassword);
-		
-		passwordFieldCurrent = new JPasswordField();
-		passwordFieldCurrent.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		passwordFieldCurrent.setBounds(379, 71, 339, 75);
-		contentPaneChangePW.add(passwordFieldCurrent);
-		
-		JLabel lblNewPassword = new JLabel("New Password:");
-		lblNewPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewPassword.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblNewPassword.setBounds(10, 157, 359, 75);
-		contentPaneChangePW.add(lblNewPassword);
-		
-		JLabel lblConfrimNew = new JLabel("Confirm New Password:");
-		lblConfrimNew.setHorizontalAlignment(SwingConstants.CENTER);
-		lblConfrimNew.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblConfrimNew.setBounds(10, 243, 359, 75);
-		contentPaneChangePW.add(lblConfrimNew);
-		
-		passwordFieldNew = new JPasswordField();
-		passwordFieldNew.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		passwordFieldNew.setBounds(379, 157, 339, 75);
-		contentPaneChangePW.add(passwordFieldNew);
-		
-		passwordFieldConfirmNew = new JPasswordField();
-		passwordFieldConfirmNew.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		passwordFieldConfirmNew.setBounds(379, 251, 339, 75);
-		contentPaneChangePW.add(passwordFieldConfirmNew);
-		
-		JButton button = new JButton("Return");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				passwordFieldCurrent.setText("");
-				passwordFieldNew.setText("");
-				passwordFieldConfirmNew.setText("");
-				login.panel.removeAll();
-				login.panel.add(menu.contentPaneMenu);
-				login.panel.revalidate();
-				login.panel.repaint();
-			}
-		});
-		button.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		button.setBackground(new Color(255, 0, 51));
-		button.setBounds(612, 333, 162, 67);
-		contentPaneChangePW.add(button);
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 99, 147));
+		panel.setBounds(122, 70, 539, 330);
+		contentPaneChangePW.add(panel);
+		panel.setLayout(null);
 		
 		lblPasswordSuccessfullyChanged = new JLabel("Password successfully changed!");
+		lblPasswordSuccessfullyChanged.setBounds(115, 222, 309, 27);
+		panel.add(lblPasswordSuccessfullyChanged);
 		lblPasswordSuccessfullyChanged.setForeground(new Color(0, 204, 51));
-		lblPasswordSuccessfullyChanged.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblPasswordSuccessfullyChanged.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblPasswordSuccessfullyChanged.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPasswordSuccessfullyChanged.setBounds(171, 342, 430, 49);
-		contentPaneChangePW.add(lblPasswordSuccessfullyChanged);
-		lblPasswordSuccessfullyChanged.setVisible(false);
+		
+		lblInvalidPassword = new JLabel("Invalid Password...");
+		lblInvalidPassword.setBounds(169, 222, 200, 27);
+		panel.add(lblInvalidPassword);
+		lblInvalidPassword.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInvalidPassword.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblInvalidPassword.setForeground(new Color(255, 0, 51));
+		
+		lblPasswordsNoMatch = new JLabel("Passwords do not match.");
+		lblPasswordsNoMatch.setBounds(147, 222, 244, 27);
+		panel.add(lblPasswordsNoMatch);
+		lblPasswordsNoMatch.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblPasswordsNoMatch.setForeground(new Color(255, 204, 51));
+		lblPasswordsNoMatch.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		btnOK = new JButton("OK");
+		btnOK.setBounds(103, 252, 155, 67);
+		panel.add(btnOK);
+		btnOK.setForeground(Color.WHITE);
 		btnOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (Arrays.equals(passwordFieldCurrent.getPassword(),Password)){
@@ -166,27 +134,83 @@ public class ChangePW extends ATM {
 				passwordFieldConfirmNew.setText("");
 			}
 		});
-		btnOK.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnOK.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		btnOK.setBackground(new Color(51, 204, 0));
-		btnOK.setBounds(10, 333, 155, 67);
-		contentPaneChangePW.add(btnOK);
 		
-		lblInvalidPassword = new JLabel("Invalid Password...");
-		lblInvalidPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInvalidPassword.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblInvalidPassword.setForeground(new Color(255, 0, 51));
-		lblInvalidPassword.setBounds(171, 333, 431, 67);
-		contentPaneChangePW.add(lblInvalidPassword);
-		lblInvalidPassword.setVisible(false);
+		JButton button = new JButton("Return");
+		button.setBounds(284, 252, 162, 67);
+		panel.add(button);
+		button.setForeground(Color.WHITE);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				passwordFieldCurrent.setText("");
+				passwordFieldNew.setText("");
+				passwordFieldConfirmNew.setText("");
+				login.panel.removeAll();
+				login.panel.add(menu.contentPaneMenu);
+				login.panel.revalidate();
+				login.panel.repaint();
+			}
+		});
+		button.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		button.setBackground(new Color(255, 0, 51));
 		
-		lblPasswordsNoMatch = new JLabel("Passwords do not match.");
-		lblPasswordsNoMatch.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblPasswordsNoMatch.setForeground(new Color(255, 204, 51));
-		lblPasswordsNoMatch.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPasswordsNoMatch.setBounds(171, 329, 431, 71);
-		contentPaneChangePW.add(lblPasswordsNoMatch);
+		panel_1 = new JPanel();
+		panel_1.setBackground(new Color(0, 51, 102));
+		panel_1.setBounds(16, 83, 506, 141);
+		panel.add(panel_1);
+		panel_1.setLayout(null);
+		
+		passwordFieldConfirmNew = new JPasswordField();
+		passwordFieldConfirmNew.setBounds(267, 95, 210, 27);
+		panel_1.add(passwordFieldConfirmNew);
+		passwordFieldConfirmNew.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		
+		JLabel lblConfrimNew = new JLabel("Confirm New Password:");
+		lblConfrimNew.setBounds(25, 95, 232, 27);
+		panel_1.add(lblConfrimNew);
+		lblConfrimNew.setForeground(Color.WHITE);
+		lblConfrimNew.setHorizontalAlignment(SwingConstants.CENTER);
+		lblConfrimNew.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		
+		passwordFieldNew = new JPasswordField();
+		passwordFieldNew.setBounds(267, 57, 210, 27);
+		panel_1.add(passwordFieldNew);
+		passwordFieldNew.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		
+		JLabel lblNewPassword = new JLabel("New Password:");
+		lblNewPassword.setBounds(107, 57, 150, 27);
+		panel_1.add(lblNewPassword);
+		lblNewPassword.setForeground(Color.WHITE);
+		lblNewPassword.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewPassword.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		
+		passwordFieldCurrent = new JPasswordField();
+		passwordFieldCurrent.setBounds(267, 19, 210, 27);
+		panel_1.add(passwordFieldCurrent);
+		passwordFieldCurrent.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		
+		JLabel lblCurrentPassword = new JLabel("Current Password:");
+		lblCurrentPassword.setBounds(78, 19, 179, 27);
+		panel_1.add(lblCurrentPassword);
+		lblCurrentPassword.setForeground(Color.WHITE);
+		lblCurrentPassword.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblCurrentPassword.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JLabel lblChangePassword = new JLabel("Change Password");
+		lblChangePassword.setBounds(113, 11, 312, 49);
+		panel.add(lblChangePassword);
+		lblChangePassword.setForeground(Color.WHITE);
+		lblChangePassword.setHorizontalAlignment(SwingConstants.CENTER);
+		lblChangePassword.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		lblPasswordsNoMatch.setVisible(false);
+		lblInvalidPassword.setVisible(false);
+		lblPasswordSuccessfullyChanged.setVisible(false);
+		
+		JLabel lblBackground = new JLabel("");
+		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM\\img\\blue.jpg"));
+		lblBackground.setBounds(0, 0, 784, 411);
+		contentPaneChangePW.add(lblBackground);
 		
 	}
-
 }

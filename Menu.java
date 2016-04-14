@@ -21,7 +21,7 @@ public class Menu extends ATM{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 800, 450);
 		contentPaneMenu = new JPanel();
-		contentPaneMenu.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPaneMenu.setBorder(new EmptyBorder(0,0,0,0));
 		setContentPane(contentPaneMenu);
 		contentPaneMenu.setLayout(null);
 		
@@ -34,7 +34,7 @@ public class Menu extends ATM{
 		
 		JButton btnBalance = new JButton("Balance");
 		btnBalance.setForeground(Color.WHITE);
-		btnBalance.setBackground(new Color(0, 99, 147));
+		btnBalance.setBackground(new Color(0, 51, 102));
 		btnBalance.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				login.panel.removeAll();
@@ -49,7 +49,7 @@ public class Menu extends ATM{
 		
 		JButton btnTransfer = new JButton("Transfer");
 		btnTransfer.setForeground(Color.WHITE);
-		btnTransfer.setBackground(new Color(0, 99, 147));
+		btnTransfer.setBackground(new Color(0, 51, 102));
 		btnTransfer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				login.panel.removeAll();
@@ -64,7 +64,7 @@ public class Menu extends ATM{
 		
 		JButton btnDeposit = new JButton("Deposit");
 		btnDeposit.setForeground(Color.WHITE);
-		btnDeposit.setBackground(new Color(0, 99, 147));
+		btnDeposit.setBackground(new Color(0, 51, 102));
 		btnDeposit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				login.panel.removeAll();
@@ -78,7 +78,7 @@ public class Menu extends ATM{
 		contentPaneMenu.add(btnDeposit);
 		
 		JButton btnWithdraw = new JButton("Withdraw");
-		btnWithdraw.setBackground(new Color(0, 99, 147));
+		btnWithdraw.setBackground(new Color(0, 51, 102));
 		btnWithdraw.setForeground(Color.WHITE);
 		btnWithdraw.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -92,7 +92,7 @@ public class Menu extends ATM{
 		btnWithdraw.setBounds(402, 219, 162, 82);
 		contentPaneMenu.add(btnWithdraw);
 		
-		JButton btnChangePW = new JButton("<html>Change</br> Password </html>");
+		JButton btnChangePW = new JButton("<html>&nbsp;Change</br> Password </html>");
 		btnChangePW.setVerticalAlignment(SwingConstants.TOP);
 		btnChangePW.setForeground(Color.WHITE);
 		btnChangePW.addActionListener(new ActionListener() {
@@ -135,5 +135,4 @@ public class Menu extends ATM{
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneMenu.add(lblBackground);
 	}
-
 }

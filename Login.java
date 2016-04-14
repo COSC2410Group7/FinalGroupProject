@@ -22,9 +22,7 @@ import java.awt.CardLayout;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 public class Login extends ATM {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JTextField accountField;
 	private JPasswordField passwordField;
@@ -34,6 +32,8 @@ public class Login extends ATM {
 	JPanel contentPaneLogin;
 	private JLabel lblYourAccountIs;
 	private JLabel lblBackground;
+	private JPanel panel_2;
+	private JLabel lblNewLabel;
 	public Login() {
 		setForeground(new Color(0, 153, 204));
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
@@ -51,25 +51,46 @@ public class Login extends ATM {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 99, 147));
-		panel_1.setBounds(172, 84, 439, 242);
+		panel_1.setBounds(172, 51, 439, 308);
 		contentPaneLogin.add(panel_1);
 		panel_1.setLayout(null);
 		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.setBounds(47, 228, 166, 69);
+		panel_1.add(btnLogin);
+		btnLogin.setForeground(Color.WHITE);
+		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		btnLogin.setBackground(Color.GREEN);
+		
+		JButton btnClear = new JButton("Clear");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				accountField.setText("");
+				passwordField.setText("");
+				
+			}
+		});
+		btnClear.setForeground(Color.WHITE);
+		btnClear.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		btnClear.setBackground(Color.RED);
+		btnClear.setBounds(223, 228, 166, 69);
+		panel_1.add(btnClear);
+		
+		panel_2 = new JPanel();
+		panel_2.setBackground(new Color(0, 51, 102));
+		panel_2.setBounds(15, 114, 408, 103);
+		panel_1.add(panel_2);
+		panel_2.setLayout(null);
+		
 		JLabel lblAccountNumber = new JLabel("Account Number:");
-		lblAccountNumber.setBounds(26, 42, 194, 31);
-		panel_1.add(lblAccountNumber);
+		lblAccountNumber.setBounds(13, 12, 194, 31);
+		panel_2.add(lblAccountNumber);
 		lblAccountNumber.setForeground(Color.WHITE);
 		lblAccountNumber.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		
-		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(94, 71, 121, 61);
-		panel_1.add(lblPassword);
-		lblPassword.setForeground(Color.WHITE);
-		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		
 		accountField = new JTextField();
-		accountField.setBounds(214, 47, 194, 25);
-		panel_1.add(accountField);
+		accountField.setBounds(196, 18, 194, 25);
+		panel_2.add(accountField);
 		accountField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
@@ -160,8 +181,8 @@ public class Login extends ATM {
 		accountField.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(214, 89, 194, 25);
-		panel_1.add(passwordField);
+		passwordField.setBounds(196, 54, 194, 25);
+		panel_2.add(passwordField);
 		passwordField.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER){
@@ -249,40 +270,32 @@ public class Login extends ATM {
 		passwordField.setHorizontalAlignment(SwingConstants.LEFT);
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		
+		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setBounds(81, 54, 100, 27);
+		panel_2.add(lblPassword);
+		lblPassword.setForeground(Color.WHITE);
+		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		
 		lblError = new JLabel("Invalid Credentials");
-		lblError.setBounds(153, 117, 133, 25);
-		panel_1.add(lblError);
+		lblError.setBounds(137, 81, 133, 25);
+		panel_2.add(lblError);
 		lblError.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblError.setForeground(new Color(255, 0, 51));
 		lblError.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		lblYourAccountIs = new JLabel("Your account is disabled for 10 seconds.");
-		lblYourAccountIs.setBounds(55, 217, 329, 25);
-		panel_1.add(lblYourAccountIs);
-		lblYourAccountIs.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblYourAccountIs = new JLabel("Your account has been disabled for 10 seconds.");
+		lblYourAccountIs.setBounds(24, 82, 360, 22);
+		panel_2.add(lblYourAccountIs);
+		lblYourAccountIs.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblYourAccountIs.setForeground(new Color(255, 0, 0));
 		lblYourAccountIs.setHorizontalAlignment(SwingConstants.CENTER);
+		lblYourAccountIs.setVisible(false);
 		
-		JButton btnLogin = new JButton("Login");
-		btnLogin.setBounds(76, 145, 144, 61);
-		panel_1.add(btnLogin);
-		btnLogin.setForeground(Color.WHITE);
-		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 45));
-		btnLogin.setBackground(new Color(51, 204, 51));
-		
-		JButton btnClear = new JButton("Clear");
-		btnClear.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				accountField.setText("");
-				passwordField.setText("");
-				
-			}
-		});
-		btnClear.setForeground(Color.WHITE);
-		btnClear.setFont(new Font("Tahoma", Font.PLAIN, 45));
-		btnClear.setBackground(Color.RED);
-		btnClear.setBounds(230, 145, 144, 61);
-		panel_1.add(btnClear);
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM\\img\\newlogo.png"));
+		lblNewLabel.setBounds(130, 0, 191, 131);
+		panel_1.add(lblNewLabel);
+		lblError.setVisible(false);
 		
 		lblBackground = new JLabel("");
 		lblBackground.setBounds(0, 0, 784, 411);
@@ -356,7 +369,10 @@ public class Login extends ATM {
 							changeStatus.start();
 							changeStatus.setRepeats(false);
 						}
-						lblError.setVisible(true);
+						if(attemptCount != 3)
+							lblError.setVisible(true);
+						else
+							;
 						ActionListener erase = new ActionListener() {
 							public void actionPerformed(ActionEvent e){
 								lblError.setVisible(false);
@@ -371,7 +387,5 @@ public class Login extends ATM {
 				}
 			}
 		});
-		lblYourAccountIs.setVisible(false);
-		lblError.setVisible(false);
 	}
 }

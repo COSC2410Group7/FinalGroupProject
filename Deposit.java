@@ -15,6 +15,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class Deposit extends ATM {
 
@@ -27,7 +28,7 @@ public class Deposit extends ATM {
 	private JLabel lblConfirmation;
 	private JLabel lblInvalidInput;
 	
-	public Deposit() {
+	public Deposit() throws NumberFormatException {
 		setTitle("Deposit");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 800, 450);
@@ -36,25 +37,37 @@ public class Deposit extends ATM {
 		setContentPane(contentPaneDeposit);
 		contentPaneDeposit.setLayout(null);
 		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 99, 147));
+		panel.setBounds(151, 63, 482, 285);
+		contentPaneDeposit.add(panel);
+		panel.setLayout(null);
+		
 		JLabel lblWithdraw = new JLabel("Deposit");
+		lblWithdraw.setForeground(Color.WHITE);
+		lblWithdraw.setBounds(164, 11, 154, 49);
+		panel.add(lblWithdraw);
 		lblWithdraw.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWithdraw.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		lblWithdraw.setBounds(210, 27, 380, 49);
-		contentPaneDeposit.add(lblWithdraw);
 		
-		JLabel lblSign = new JLabel("$");
-		lblSign.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSign.setFont(new Font("Tahoma", Font.PLAIN, 50));
-		lblSign.setBounds(215, 160, 43, 59);
-		contentPaneDeposit.add(lblSign);
+		lblConfirmation = new JLabel("Deposit complete.");
+		lblConfirmation.setBounds(153, 153, 175, 27);
+		panel.add(lblConfirmation);
+		lblConfirmation.setForeground(new Color(0, 204, 0));
+		lblConfirmation.setHorizontalAlignment(SwingConstants.CENTER);
+		lblConfirmation.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 50));
-		textField.setBounds(268, 160, 322, 59);
-		contentPaneDeposit.add(textField);
-		textField.setColumns(10);
+		lblInvalidInput = new JLabel("Invalid Input");
+		lblInvalidInput.setBounds(178, 152, 123, 27);
+		panel.add(lblInvalidInput);
+		lblInvalidInput.setForeground(new Color(255, 0, 51));
+		lblInvalidInput.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInvalidInput.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JButton btnDeposit = new JButton("Deposit");
+		btnDeposit.setForeground(Color.WHITE);
+		btnDeposit.setBounds(57, 183, 171, 75);
+		panel.add(btnDeposit);
 		btnDeposit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!(textField.getText()==null)||!(Integer.parseInt(textField.getText())<0)){
@@ -102,12 +115,13 @@ public class Deposit extends ATM {
 				textField.setText("");
 			}
 		});
-		btnDeposit.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnDeposit.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		btnDeposit.setBackground(new Color(51, 204, 0));
-		btnDeposit.setBounds(10, 333, 197, 67);
-		contentPaneDeposit.add(btnDeposit);
 		
 		JButton btnReturn = new JButton("Return");
+		btnReturn.setForeground(Color.WHITE);
+		btnReturn.setBounds(253, 184, 171, 75);
+		panel.add(btnReturn);
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				login.panel.removeAll();
@@ -116,25 +130,40 @@ public class Deposit extends ATM {
 				login.panel.repaint();
 			}
 		});
-		btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		btnReturn.setBackground(new Color(255, 0, 51));
-		btnReturn.setBounds(612, 333, 162, 67);
-		contentPaneDeposit.add(btnReturn);
 		
-		lblConfirmation = new JLabel("Deposit complete.");
-		lblConfirmation.setForeground(new Color(0, 204, 0));
-		lblConfirmation.setHorizontalAlignment(SwingConstants.CENTER);
-		lblConfirmation.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		lblConfirmation.setBounds(150, 241, 500, 67);
-		contentPaneDeposit.add(lblConfirmation);
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(0, 51, 102));
+		panel_1.setBounds(29, 80, 430, 73);
+		panel.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel lblSign = new JLabel("$");
+		lblSign.setBounds(110, 15, 16, 37);
+		panel_1.add(lblSign);
+		lblSign.setForeground(Color.WHITE);
+		lblSign.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSign.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		
+		textField = new JTextField();
+		textField.setHorizontalAlignment(SwingConstants.LEFT);
+		textField.setBounds(136, 20, 270, 33);
+		panel_1.add(textField);
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		textField.setColumns(10);
+		
+		JLabel lblDepositAmount = new JLabel("Amount: ");
+		lblDepositAmount.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblDepositAmount.setForeground(Color.WHITE);
+		lblDepositAmount.setBounds(10, 22, 89, 28);
+		panel_1.add(lblDepositAmount);
+		lblInvalidInput.setVisible(false);
 		lblConfirmation.setVisible(false);
 		
-		lblInvalidInput = new JLabel("Invalid Input");
-		lblInvalidInput.setForeground(new Color(255, 0, 51));
-		lblInvalidInput.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInvalidInput.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblInvalidInput.setBounds(215, 333, 375, 67);
-		contentPaneDeposit.add(lblInvalidInput);
-		lblInvalidInput.setVisible(false);
+		JLabel lblBackground = new JLabel("");
+		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		lblBackground.setBounds(0, 0, 784, 411);
+		contentPaneDeposit.add(lblBackground);
 	}
 }
