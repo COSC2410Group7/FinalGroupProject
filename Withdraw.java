@@ -414,7 +414,7 @@ public class Withdraw extends ATM {
 		textField = new JTextField();
 		textField.setBounds(190, 30, 157, 23);
 		darkerPanel.add(textField);
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		textField.setHorizontalAlignment(SwingConstants.LEFT);
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
