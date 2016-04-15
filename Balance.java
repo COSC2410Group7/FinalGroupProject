@@ -12,11 +12,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
-
 public class Balance extends ATM {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	JPanel contentPaneBalance;
 	private JTextField textField;

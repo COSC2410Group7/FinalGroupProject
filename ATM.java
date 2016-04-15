@@ -5,9 +5,6 @@ import javax.swing.JFrame;
 public class ATM extends JFrame{
 	public ATM() {
 	}
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	static String accountInfo[];
 	static String accountPW[];
