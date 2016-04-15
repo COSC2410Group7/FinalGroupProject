@@ -69,75 +69,12 @@ public class Withdraw extends ATM {
 		darkerPanel.setBackground(new Color(0, 51, 102));
 		darkerPanel.setLayout(null);
 		
-		JButton btnWithdrawbutton = new JButton("Withdraw");
-		btnWithdrawbutton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int userWithdraw = 0;
-				try{
-					userWithdraw = Integer.parseInt(textField.getText());
-					int balance = Integer.parseInt(accountInfo[3]);
-					balance-=userWithdraw;
-					if (balance>0){
-						String convert = new String(Integer.toString(balance));
-						accountInfo[3]=convert;
-						PrintWriter writer;
-						try {
-							writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
-							BufferedWriter bwriter = new BufferedWriter(writer);
-							for(int i=0;i<5;i++){
-								bwriter.write(accountInfo[i]);
-								if(i!=4)
-									bwriter.newLine();
-							}
-							bwriter.close();
-						}
-						catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						lblWithdrawComplete.setVisible(true);
-						ActionListener erase = new ActionListener() {
-							public void actionPerformed(ActionEvent e){
-								lblWithdrawComplete.setVisible(false);
-							}
-						};
-						Timer error = new Timer(1000,erase);
-						error.start();
-						error.setRepeats(false);
-						textField.setText("");
-					}
-					else{
-						balance+=userWithdraw;
-						lblInsufficientFunds.setVisible(true);
-						ActionListener erase = new ActionListener() {
-							public void actionPerformed(ActionEvent e){
-								lblInsufficientFunds.setVisible(false);
-							}
-						};
-						Timer error = new Timer(1000,erase);
-						error.start();
-						error.setRepeats(false);
-					}
-				}
-				catch(NumberFormatException e1){
-					lblInvalidInput.setVisible(true);
-					ActionListener erase = new ActionListener() {
-						public void actionPerformed(ActionEvent e){
-							lblInvalidInput.setVisible(false);
-						}
-					};
-					Timer error = new Timer(1000,erase);
-					error.start();
-					error.setRepeats(false);
-					textField.setText("");
-				}
-			}
-		});
-		btnWithdrawbutton.setBounds(357, 9, 163, 64);
-		darkerPanel.add(btnWithdrawbutton);
-		btnWithdrawbutton.setForeground(Color.WHITE);
-		btnWithdrawbutton.setBackground(Color.GREEN);
-		btnWithdrawbutton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		JLabel lblCustom = new JLabel("Custom Amount: $");
+		lblCustom.setBounds(10, 28, 195, 25);
+		darkerPanel.add(lblCustom);
+		lblCustom.setForeground(Color.WHITE);
+		lblCustom.setHorizontalAlignment(SwingConstants.LEFT);
+		lblCustom.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		
 		textField = new JTextField();
 		textField.setBounds(190, 30, 157, 23);
@@ -211,12 +148,75 @@ public class Withdraw extends ATM {
 		});
 		textField.setColumns(10);
 		
-		JLabel lblCustom = new JLabel("Custom Amount: $");
-		lblCustom.setBounds(10, 28, 195, 25);
-		darkerPanel.add(lblCustom);
-		lblCustom.setForeground(Color.WHITE);
-		lblCustom.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCustom.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		JButton btnWithdrawbutton = new JButton("Withdraw");
+		btnWithdrawbutton.setBounds(357, 11, 163, 64);
+		darkerPanel.add(btnWithdrawbutton);
+		btnWithdrawbutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int userWithdraw = 0;
+				try{
+					userWithdraw = Integer.parseInt(textField.getText());
+					int balance = Integer.parseInt(accountInfo[3]);
+					balance-=userWithdraw;
+					if (balance>0){
+						String convert = new String(Integer.toString(balance));
+						accountInfo[3]=convert;
+						PrintWriter writer;
+						try {
+							writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
+							BufferedWriter bwriter = new BufferedWriter(writer);
+							for(int i=0;i<5;i++){
+								bwriter.write(accountInfo[i]);
+								if(i!=4)
+									bwriter.newLine();
+							}
+							bwriter.close();
+						}
+						catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						lblWithdrawComplete.setVisible(true);
+						ActionListener erase = new ActionListener() {
+							public void actionPerformed(ActionEvent e){
+								lblWithdrawComplete.setVisible(false);
+							}
+						};
+						Timer error = new Timer(1000,erase);
+						error.start();
+						error.setRepeats(false);
+						textField.setText("");
+					}
+					else{
+						balance+=userWithdraw;
+						lblInsufficientFunds.setVisible(true);
+						ActionListener erase = new ActionListener() {
+							public void actionPerformed(ActionEvent e){
+								lblInsufficientFunds.setVisible(false);
+							}
+						};
+						Timer error = new Timer(1000,erase);
+						error.start();
+						error.setRepeats(false);
+					}
+				}
+				catch(NumberFormatException e1){
+					lblInvalidInput.setVisible(true);
+					ActionListener erase = new ActionListener() {
+						public void actionPerformed(ActionEvent e){
+							lblInvalidInput.setVisible(false);
+						}
+					};
+					Timer error = new Timer(1000,erase);
+					error.start();
+					error.setRepeats(false);
+					textField.setText("");
+				}
+			}
+		});
+		btnWithdrawbutton.setForeground(Color.WHITE);
+		btnWithdrawbutton.setBackground(Color.GREEN);
+		btnWithdrawbutton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		
 		JButton btnWith20 = new JButton("$20");
 		btnWith20.setBounds(20, 114, 170, 75);
@@ -380,21 +380,59 @@ public class Withdraw extends ATM {
 		});
 		btnWith60.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		
-		JButton btnReturn = new JButton("Return");
-		btnReturn.setBounds(380, 200, 170, 75);
-		panel.add(btnReturn);
-		btnReturn.setForeground(Color.WHITE);
-		btnReturn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				textField.setText("");
-				login.panel.removeAll();
-				login.panel.add(menu.contentPaneMenu);
-				login.panel.revalidate();
-				login.panel.repaint();
+		JButton btnWith80 = new JButton("$80");
+		btnWith80.setBounds(20, 200, 170, 75);
+		panel.add(btnWith80);
+		btnWith80.setBackground(new Color(0, 51, 102));
+		btnWith80.setForeground(Color.WHITE);
+		btnWith80.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int balance = Integer.parseInt(accountInfo[3]);
+				balance-=80;
+				if (balance>0){
+					String convert = new String(Integer.toString(balance));
+					accountInfo[3]=convert;
+					PrintWriter writer;
+					try {
+						writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
+						BufferedWriter bwriter = new BufferedWriter(writer);
+						for(int i=0;i<5;i++){
+							bwriter.write(accountInfo[i]);
+							if(i!=4)
+								bwriter.newLine();
+						}
+						bwriter.close();
+					}
+					catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					lblWithdrawComplete.setVisible(true);
+					ActionListener erase = new ActionListener() {
+						public void actionPerformed(ActionEvent e){
+							lblWithdrawComplete.setVisible(false);
+						}
+					};
+					Timer error = new Timer(1000,erase);
+					error.start();
+					error.setRepeats(false);
+					textField.setText("");
+				}
+				else{
+					balance+=80;
+					lblInsufficientFunds.setVisible(true);
+					ActionListener erase = new ActionListener() {
+						public void actionPerformed(ActionEvent e){
+							lblInsufficientFunds.setVisible(false);
+						}
+					};
+					Timer error = new Timer(1000,erase);
+					error.start();
+					error.setRepeats(false);
+				}
 			}
 		});
-		btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		btnReturn.setBackground(new Color(255, 0, 51));
+		btnWith80.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		
 		JButton btnWith100 = new JButton("$100");
 		btnWith100.setBounds(200, 200, 170, 75);
@@ -450,64 +488,26 @@ public class Withdraw extends ATM {
 		});
 		btnWith100.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		
-		JButton btnWith80 = new JButton("$80");
-		btnWith80.setBounds(20, 200, 170, 75);
-		panel.add(btnWith80);
-		btnWith80.setBackground(new Color(0, 51, 102));
-		btnWith80.setForeground(Color.WHITE);
-		btnWith80.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int balance = Integer.parseInt(accountInfo[3]);
-				balance-=80;
-				if (balance>0){
-					String convert = new String(Integer.toString(balance));
-					accountInfo[3]=convert;
-					PrintWriter writer;
-					try {
-						writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
-						BufferedWriter bwriter = new BufferedWriter(writer);
-						for(int i=0;i<5;i++){
-							bwriter.write(accountInfo[i]);
-							if(i!=4)
-								bwriter.newLine();
-						}
-						bwriter.close();
-					}
-					catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					lblWithdrawComplete.setVisible(true);
-					ActionListener erase = new ActionListener() {
-						public void actionPerformed(ActionEvent e){
-							lblWithdrawComplete.setVisible(false);
-						}
-					};
-					Timer error = new Timer(1000,erase);
-					error.start();
-					error.setRepeats(false);
-					textField.setText("");
-				}
-				else{
-					balance+=80;
-					lblInsufficientFunds.setVisible(true);
-					ActionListener erase = new ActionListener() {
-						public void actionPerformed(ActionEvent e){
-							lblInsufficientFunds.setVisible(false);
-						}
-					};
-					Timer error = new Timer(1000,erase);
-					error.start();
-					error.setRepeats(false);
-				}
+		JButton btnReturn = new JButton("Return");
+		btnReturn.setBounds(380, 200, 170, 75);
+		panel.add(btnReturn);
+		btnReturn.setForeground(Color.WHITE);
+		btnReturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				textField.setText("");
+				login.panel.removeAll();
+				login.panel.add(menu.contentPaneMenu);
+				login.panel.revalidate();
+				login.panel.repaint();
 			}
 		});
-		btnWith80.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnReturn.setBackground(new Color(255, 0, 51));
 		
 		JLabel lblBg = new JLabel("");
-		lblBg.setIcon(new ImageIcon(Withdraw.class.getResource("/blue.jpg")));
 		lblBg.setBounds(0, 0, 784, 411);
 		contentPaneWithdraw.add(lblBg);
+		lblBg.setIcon(new ImageIcon(Withdraw.class.getResource("/blue.jpg")));
 		lblInsufficientFunds.setVisible(false);
 	}
 }

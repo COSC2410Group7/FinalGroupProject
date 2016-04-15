@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
 public class Transfer extends ATM {
 	private static final long serialVersionUID = 1L;
 	JPanel contentPaneTransfer;
@@ -188,7 +186,6 @@ public class Transfer extends ATM {
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		label_1.setBounds(220, 47, 21, 28);
 		panel_1.add(label_1);
-		panel_1.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, label, lblAmount, lblToAccountNumber, label_1}));
 		
 		lblInsufficientFunds = new JLabel("Insufficient funds.");
 		lblInsufficientFunds.setBounds(151, 163, 180, 29);
@@ -203,8 +200,5 @@ public class Transfer extends ATM {
 		lblBackground.setIcon(new ImageIcon(Transfer.class.getResource("/blue.jpg")));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneTransfer.add(lblBackground);
-		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, btnTransfer, btnReturn, lblTransfer, lblInvalidInput, lblTransferComplete, panel_1, label, lblAmount, lblToAccountNumber, label_1, lblInsufficientFunds}));
-		contentPaneTransfer.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, btnTransfer, btnReturn, panel, lblTransfer, lblInvalidInput, lblTransferComplete, panel_1, label, lblAmount, lblToAccountNumber, label_1, lblInsufficientFunds, lblBackground}));
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, btnTransfer, btnReturn, contentPaneTransfer, panel, lblTransfer, lblInvalidInput, lblTransferComplete, panel_1, label, lblAmount, lblToAccountNumber, label_1, lblInsufficientFunds, lblBackground}));
 	}
 }
