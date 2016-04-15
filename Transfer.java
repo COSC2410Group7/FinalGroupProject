@@ -132,10 +132,10 @@ public class Transfer extends ATM {
 		panel.add(btnReturn);
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				login.panel.removeAll();
-				login.panel.add(menu.contentPaneMenu);
-				login.panel.revalidate();
-				login.panel.repaint();
+				login.CardLayout.removeAll();
+				login.CardLayout.add(menu.contentPaneMenu);
+				login.CardLayout.revalidate();
+				login.CardLayout.repaint();
 			}
 		});
 		btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 35));
@@ -186,6 +186,7 @@ public class Transfer extends ATM {
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		label_1.setBounds(220, 47, 21, 28);
 		panel_1.add(label_1);
+		
 		
 		lblInsufficientFunds = new JLabel("Insufficient funds.");
 		lblInsufficientFunds.setBounds(151, 163, 180, 29);

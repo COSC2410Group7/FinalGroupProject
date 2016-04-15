@@ -51,10 +51,10 @@ public class Balance extends ATM {
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText("");
-				login.panel.removeAll();
-				login.panel.add(menu.contentPaneMenu);
-				login.panel.revalidate();
-				login.panel.repaint();
+				login.CardLayout.removeAll();
+				login.CardLayout.add(menu.contentPaneMenu);
+				login.CardLayout.revalidate();
+				login.CardLayout.repaint();
 			}
 		});
 		btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 30));

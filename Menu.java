@@ -35,10 +35,10 @@ public class Menu extends ATM{
 		btnBalance.setBackground(new Color(0, 51, 102));
 		btnBalance.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				login.panel.removeAll();
-				login.panel.add(balance.contentPaneBalance);
-				login.panel.revalidate();
-				login.panel.repaint();
+				login.CardLayout.removeAll();
+				login.CardLayout.add(balance.contentPaneBalance);
+				login.CardLayout.revalidate();
+				login.CardLayout.repaint();
 			}
 		});
 		btnBalance.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -50,10 +50,10 @@ public class Menu extends ATM{
 		btnTransfer.setBackground(new Color(0, 51, 102));
 		btnTransfer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				login.panel.removeAll();
-				login.panel.add(transfer.contentPaneTransfer);
-				login.panel.revalidate();
-				login.panel.repaint();
+				login.CardLayout.removeAll();
+				login.CardLayout.add(transfer.contentPaneTransfer);
+				login.CardLayout.revalidate();
+				login.CardLayout.repaint();
 			}
 		});
 		btnTransfer.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -65,10 +65,10 @@ public class Menu extends ATM{
 		btnDeposit.setBackground(new Color(0, 51, 102));
 		btnDeposit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				login.panel.removeAll();
-				login.panel.add(deposit.contentPaneDeposit);
-				login.panel.revalidate();
-				login.panel.repaint();
+				login.CardLayout.removeAll();
+				login.CardLayout.add(deposit.contentPaneDeposit);
+				login.CardLayout.revalidate();
+				login.CardLayout.repaint();
 			}
 		});
 		btnDeposit.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -80,10 +80,10 @@ public class Menu extends ATM{
 		btnWithdraw.setForeground(Color.WHITE);
 		btnWithdraw.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				login.panel.removeAll();
-				login.panel.add(withdraw.contentPaneWithdraw);
-				login.panel.revalidate();
-				login.panel.repaint();
+				login.CardLayout.removeAll();
+				login.CardLayout.add(withdraw.contentPaneWithdraw);
+				login.CardLayout.revalidate();
+				login.CardLayout.repaint();
 			}
 		});
 		btnWithdraw.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -94,10 +94,10 @@ public class Menu extends ATM{
 		btnLogout.setForeground(Color.WHITE);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				login.panel.removeAll();
-				login.panel.add(login.contentPaneLogin);
-				login.panel.revalidate();
-				login.panel.repaint();
+				login.CardLayout.removeAll();
+				login.CardLayout.add(login.contentPaneLogin);
+				login.CardLayout.revalidate();
+				login.CardLayout.repaint();
 			}
 		});
 		btnLogout.setBackground(new Color(255, 0, 51));
@@ -110,10 +110,10 @@ public class Menu extends ATM{
 		btnChangePW.setForeground(Color.WHITE);
 		btnChangePW.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				login.panel.removeAll();
-				login.panel.add(changePW.contentPaneChangePW);
-				login.panel.revalidate();
-				login.panel.repaint();
+				login.CardLayout.removeAll();
+				login.CardLayout.add(changePW.contentPaneChangePW);
+				login.CardLayout.revalidate();
+				login.CardLayout.repaint();
 			}
 		});
 		btnChangePW.setBackground(new Color(255, 204, 0));

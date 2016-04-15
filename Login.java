@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JPasswordField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -17,6 +19,7 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
@@ -26,7 +29,7 @@ public class Login extends ATM {
 	private JPasswordField passwordField;
 	private JLabel lblError;
 	private int attemptCount=0;
-	public JPanel panel;
+	public JPanel CardLayout;
 	JPanel contentPaneLogin;
 	private JLabel lblYourAccountIs;
 	private JLabel lblBackground;
@@ -37,15 +40,20 @@ public class Login extends ATM {
 		f.setForeground(new Color(0, 153, 204));
 		f.setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/newlogo.png")));
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setBounds(500, 250, 800, 450);
-		f.setSize(800, 450);
-		panel = new JPanel();
-		f.setContentPane(panel);
+		//f.setBounds(500, 250, 800, 450);
+		//f.setSize(800, 450);
+		CardLayout = new JPanel();
+		CardLayout.setPreferredSize(new Dimension(784, 411));
+		f.getContentPane().setLayout(new BorderLayout());
+		f.add(CardLayout, BorderLayout.CENTER);
+		f.setResizable(false);
+		//f.setContentPane(CardLayout);
+		f.pack();
 		f.setVisible(true);
-		panel.setLayout(new CardLayout(0, 0));
+		CardLayout.setLayout(new CardLayout(0, 0));
 		
 		contentPaneLogin = new JPanel();
-		panel.add(contentPaneLogin);
+		CardLayout.add(contentPaneLogin);
 		contentPaneLogin.setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
@@ -96,10 +104,10 @@ public class Login extends ATM {
 				if (arg0.getKeyCode() == KeyEvent.VK_ENTER){
 					if(accountInfo[4].equals("Active")){
 						if (accountField.getText().equals(ATM.accountPW[0]) && Arrays.equals(passwordField.getPassword(), Password)){
-							login.panel.remove(contentPaneLogin);
-							login.panel.add(menu.contentPaneMenu);
-							login.panel.revalidate();
-							login.panel.repaint();
+							login.CardLayout.remove(contentPaneLogin);
+							login.CardLayout.add(menu.contentPaneMenu);
+							login.CardLayout.revalidate();
+							login.CardLayout.repaint();
 							attemptCount=0;
 						}
 						else{
@@ -187,10 +195,10 @@ public class Login extends ATM {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER){
 					if(accountInfo[4].equals("Active")){
 						if (accountField.getText().equals(ATM.accountPW[0]) && Arrays.equals(passwordField.getPassword(), Password)){
-							login.panel.remove(contentPaneLogin);
-							login.panel.add(menu.contentPaneMenu);
-							login.panel.revalidate();
-							login.panel.repaint();
+							login.CardLayout.remove(contentPaneLogin);
+							login.CardLayout.add(menu.contentPaneMenu);
+							login.CardLayout.revalidate();
+							login.CardLayout.repaint();
 							attemptCount=0;
 						}
 						else{
@@ -305,10 +313,10 @@ public class Login extends ATM {
 			public void actionPerformed(ActionEvent arg0) {
 				if(accountInfo[4].equals("Active")){
 					if (accountField.getText().equals(ATM.accountPW[0]) && Arrays.equals(passwordField.getPassword(), Password)){
-						login.panel.remove(contentPaneLogin);
-						login.panel.add(menu.contentPaneMenu);
-						login.panel.revalidate();
-						login.panel.repaint();
+						login.CardLayout.remove(contentPaneLogin);
+						login.CardLayout.add(menu.contentPaneMenu);
+						login.CardLayout.revalidate();
+						login.CardLayout.repaint();
 						attemptCount=0;
 					}
 					else{
