@@ -1,7 +1,5 @@
 import java.lang.String;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -16,12 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
-
 public class Deposit extends ATM {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	JPanel contentPaneDeposit;
 	private JTextField textField;
@@ -29,11 +22,7 @@ public class Deposit extends ATM {
 	private JLabel lblInvalidInput;
 	
 	public Deposit() throws NumberFormatException {
-		setTitle("Deposit");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 800, 450);
 		contentPaneDeposit = new JPanel();
-		contentPaneDeposit.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneDeposit);
 		contentPaneDeposit.setLayout(null);
 		
@@ -70,7 +59,22 @@ public class Deposit extends ATM {
 		panel.add(btnDeposit);
 		btnDeposit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!(textField.getText()==null)||!(Integer.parseInt(textField.getText())<0)){
+				int Input = 0;
+				try{
+					Input = Integer.parseInt(textField.getText());
+				}
+				catch(NumberFormatException e1){
+					lblInvalidInput.setVisible(true);
+					ActionListener erase = new ActionListener() {
+						public void actionPerformed(ActionEvent e){
+							lblInvalidInput.setVisible(false);
+						}
+					};
+					Timer error = new Timer(1000,erase);
+					error.start();
+					error.setRepeats(false);
+				}
+				if (!(textField.getText()==null)&&Input>0){
 					int userDeposit = Integer.parseInt(textField.getText());
 					int balance = Integer.parseInt(accountInfo[3]);
 					balance+=userDeposit;
@@ -124,6 +128,7 @@ public class Deposit extends ATM {
 		panel.add(btnReturn);
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				textField.setText("");
 				login.panel.removeAll();
 				login.panel.add(menu.contentPaneMenu);
 				login.panel.revalidate();
@@ -162,7 +167,7 @@ public class Deposit extends ATM {
 		lblConfirmation.setVisible(false);
 		
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon(Deposit.class.getResource("/blue.jpg")));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneDeposit.add(lblBackground);
 	}

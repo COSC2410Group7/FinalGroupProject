@@ -1,6 +1,4 @@
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -15,24 +13,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
-
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 public class Transfer extends ATM {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	JPanel contentPaneTransfer;
 	private JTextField textFieldNumber;
 	private JTextField textFieldAmount;
 	private JLabel lblTransferComplete;
 	private JLabel lblInsufficientFunds;
+	private JLabel lblInvalidInput;
 	public Transfer() {
-		setTitle("Transfer");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 800, 450);
 		contentPaneTransfer = new JPanel();
-		contentPaneTransfer.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneTransfer);
 		contentPaneTransfer.setLayout(null);
 		
@@ -49,12 +41,13 @@ public class Transfer extends ATM {
 		lblTransfer.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTransfer.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
-		textFieldNumber = new JTextField();
-		textFieldNumber.setBounds(256, 84, 192, 28);
-		panel.add(textFieldNumber);
-		textFieldNumber.setHorizontalAlignment(SwingConstants.LEFT);
-		textFieldNumber.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		textFieldNumber.setColumns(10);
+		lblInvalidInput = new JLabel("Invalid Input");
+		lblInvalidInput.setBounds(139, 163, 204, 28);
+		panel.add(lblInvalidInput);
+		lblInvalidInput.setForeground(new Color(255, 0, 51));
+		lblInvalidInput.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInvalidInput.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblInvalidInput.setVisible(false);
 		
 		lblTransferComplete = new JLabel("Transfer Complete.");
 		lblTransferComplete.setBounds(139, 163, 204, 28);
@@ -69,51 +62,67 @@ public class Transfer extends ATM {
 		panel.add(btnTransfer);
 		btnTransfer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int userTransfer = Integer.parseInt(textFieldAmount.getText());
-				int balance = Integer.parseInt(accountInfo[3]);
-				balance-=userTransfer;
-				if(balance>0){
-					String convert = new String(Integer.toString(balance));
-					accountInfo[3]=convert;
-					PrintWriter writer;
-					try {
-						writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
-						BufferedWriter bwriter = new BufferedWriter(writer);
-						for(int i=0;i<5;i++){
-							bwriter.write(accountInfo[i]);
-							if(i!=4)
-								bwriter.newLine();
+				try{
+					int userTransfer = Integer.parseInt(textFieldAmount.getText());
+					int balance = Integer.parseInt(accountInfo[3]);
+					balance-=userTransfer;
+					if(balance>0){
+						String convert = new String(Integer.toString(balance));
+						accountInfo[3]=convert;
+						PrintWriter writer;
+						try {
+							writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
+							BufferedWriter bwriter = new BufferedWriter(writer);
+							for(int i=0;i<5;i++){
+								bwriter.write(accountInfo[i]);
+								if(i!=4)
+									bwriter.newLine();
+							}
+							bwriter.close();
 						}
-						bwriter.close();
-					}
-					catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					lblTransferComplete.setVisible(true);
-					ActionListener erase = new ActionListener() {
-						public void actionPerformed(ActionEvent e){
-							lblTransferComplete.setVisible(false);
+						catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
 						}
-					};
-					Timer error = new Timer(1000,erase);
-					error.start();
-					error.setRepeats(false);
+						lblTransferComplete.setVisible(true);
+						ActionListener erase = new ActionListener() {
+							public void actionPerformed(ActionEvent e){
+								lblTransferComplete.setVisible(false);
+							}
+						};
+						Timer error = new Timer(1000,erase);
+						error.start();
+						error.setRepeats(false);
+						textFieldAmount.setText("");
+						textFieldNumber.setText("");
+					}
+					else{
+						balance+=userTransfer;
+						lblInsufficientFunds.setVisible(true);
+						ActionListener erase = new ActionListener() {
+							public void actionPerformed(ActionEvent e){
+								lblInsufficientFunds.setVisible(false);
+							}
+						};
+						Timer error = new Timer(1000,erase);
+						error.start();
+						error.setRepeats(false);
+					}
+				}
+				catch(NumberFormatException e1){
 					textFieldAmount.setText("");
 					textFieldNumber.setText("");
-				}
-				else{
-					balance+=userTransfer;
-					lblInsufficientFunds.setVisible(true);
+					lblInvalidInput.setVisible(true);
 					ActionListener erase = new ActionListener() {
 						public void actionPerformed(ActionEvent e){
-							lblInsufficientFunds.setVisible(false);
+							lblInvalidInput.setVisible(false);
 						}
 					};
 					Timer error = new Timer(1000,erase);
 					error.start();
 					error.setRepeats(false);
 				}
+				
 			}
 		});
 		btnTransfer.setFont(new Font("Tahoma", Font.PLAIN, 33));
@@ -139,6 +148,13 @@ public class Transfer extends ATM {
 		panel_1.setBounds(22, 74, 437, 87);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
+		
+		textFieldNumber = new JTextField();
+		textFieldNumber.setBounds(235, 10, 192, 28);
+		panel_1.add(textFieldNumber);
+		textFieldNumber.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldNumber.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		textFieldNumber.setColumns(10);
 		
 		JLabel label = new JLabel("$");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 22));
@@ -172,6 +188,7 @@ public class Transfer extends ATM {
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		label_1.setBounds(220, 47, 21, 28);
 		panel_1.add(label_1);
+		panel_1.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, label, lblAmount, lblToAccountNumber, label_1}));
 		
 		lblInsufficientFunds = new JLabel("Insufficient funds.");
 		lblInsufficientFunds.setBounds(151, 163, 180, 29);
@@ -183,8 +200,11 @@ public class Transfer extends ATM {
 		lblTransferComplete.setVisible(false);
 		
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon(Transfer.class.getResource("/blue.jpg")));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneTransfer.add(lblBackground);
+		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, btnTransfer, btnReturn, lblTransfer, lblInvalidInput, lblTransferComplete, panel_1, label, lblAmount, lblToAccountNumber, label_1, lblInsufficientFunds}));
+		contentPaneTransfer.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, btnTransfer, btnReturn, panel, lblTransfer, lblInvalidInput, lblTransferComplete, panel_1, label, lblAmount, lblToAccountNumber, label_1, lblInsufficientFunds, lblBackground}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, btnTransfer, btnReturn, contentPaneTransfer, panel, lblTransfer, lblInvalidInput, lblTransferComplete, panel_1, label, lblAmount, lblToAccountNumber, label_1, lblInsufficientFunds, lblBackground}));
 	}
 }

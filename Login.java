@@ -1,6 +1,5 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -22,7 +21,6 @@ import java.awt.CardLayout;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 public class Login extends ATM {
-	
 	private static final long serialVersionUID = 1L;
 	private JTextField accountField;
 	private JPasswordField passwordField;
@@ -35,18 +33,19 @@ public class Login extends ATM {
 	private JPanel panel_2;
 	private JLabel lblNewLabel;
 	public Login() {
-		setForeground(new Color(0, 153, 204));
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
-		setTitle("ATM");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 250, 800, 450);
+		JFrame f = new JFrame("ATM");
+		f.setForeground(new Color(0, 153, 204));
+		f.setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/newlogo.png")));
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setBounds(500, 250, 800, 450);
+		f.setSize(800, 450);
 		panel = new JPanel();
-		panel.setBorder(new EmptyBorder(0, 0, 0, 0));
-		setContentPane(panel);
+		f.setContentPane(panel);
+		f.setVisible(true);
 		panel.setLayout(new CardLayout(0, 0));
 		
 		contentPaneLogin = new JPanel();
-		panel.add(contentPaneLogin, "name_2096823609730483");
+		panel.add(contentPaneLogin);
 		contentPaneLogin.setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
@@ -292,7 +291,7 @@ public class Login extends ATM {
 		lblYourAccountIs.setVisible(false);
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM\\img\\newlogo.png"));
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/newlogo.png")));
 		lblNewLabel.setBounds(130, 0, 191, 131);
 		panel_1.add(lblNewLabel);
 		lblError.setVisible(false);
@@ -300,7 +299,7 @@ public class Login extends ATM {
 		lblBackground = new JLabel("");
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneLogin.add(lblBackground);
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon(Login.class.getResource("/blue.jpg")));
 		
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

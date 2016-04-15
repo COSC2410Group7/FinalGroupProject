@@ -3,11 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.JFrame;
 public class ATM extends JFrame{
-	public ATM() {
-	}
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	static String accountInfo[];
 	static String accountPW[];
@@ -31,12 +26,11 @@ public class ATM extends JFrame{
 		Password = accountPW[1].toCharArray();
 		readFile.close();
 		balance = new Balance();
-		changePW =new ChangePW();
-		deposit =new Deposit();
+		changePW = new ChangePW();
+		deposit = new Deposit();
 		login = new Login();
 		menu = new Menu();
 		transfer = new Transfer();
-		withdraw =new Withdraw();
-		login.setVisible(true);
+		withdraw = new Withdraw();
 	}	
 }

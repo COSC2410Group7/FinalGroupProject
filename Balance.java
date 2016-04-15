@@ -1,6 +1,4 @@
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -10,20 +8,12 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
-
 public class Balance extends ATM {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	JPanel contentPaneBalance;
 	private JTextField textField;
 	public Balance() {
-		setTitle("Balance");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 800, 450);
 		contentPaneBalance = new JPanel();
-		contentPaneBalance.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneBalance);
 		contentPaneBalance.setLayout(null);
 		
@@ -120,7 +110,7 @@ public class Balance extends ATM {
 		textField.setColumns(10);
 		
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon(Balance.class.getResource("/blue.jpg")));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneBalance.add(lblBackground);
 	}

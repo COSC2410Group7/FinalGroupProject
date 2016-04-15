@@ -1,6 +1,4 @@
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -9,19 +7,11 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
-
 public class Menu extends ATM{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	JPanel contentPaneMenu;
 	public Menu() {
-		setTitle("Menu");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 800, 450);
 		contentPaneMenu = new JPanel();
-		contentPaneMenu.setBorder(new EmptyBorder(0,0,0,0));
 		setContentPane(contentPaneMenu);
 		contentPaneMenu.setLayout(null);
 		
@@ -130,7 +120,7 @@ public class Menu extends ATM{
 		btnChangePW.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon(Menu.class.getResource("/blue.jpg")));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneMenu.add(lblBackground);
 	}
