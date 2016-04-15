@@ -40,14 +40,11 @@ public class Login extends ATM {
 		f.setForeground(new Color(0, 153, 204));
 		f.setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/newlogo.png")));
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//f.setBounds(500, 250, 800, 450);
-		//f.setSize(800, 450);
 		CardLayout = new JPanel();
 		CardLayout.setPreferredSize(new Dimension(784, 411));
 		f.getContentPane().setLayout(new BorderLayout());
 		f.add(CardLayout, BorderLayout.CENTER);
 		f.setResizable(false);
-		//f.setContentPane(CardLayout);
 		f.pack();
 		f.setVisible(true);
 		CardLayout.setLayout(new CardLayout(0, 0));
