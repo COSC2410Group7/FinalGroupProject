@@ -36,7 +36,7 @@ public class Login extends ATM {
 	private JLabel lblNewLabel;
 	public Login() {
 		setForeground(new Color(0, 153, 204));
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\blue.jpg"));
 		setTitle("ATM");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 250, 800, 450);
@@ -292,7 +292,7 @@ public class Login extends ATM {
 		lblYourAccountIs.setVisible(false);
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM\\img\\newlogo.png"));
+		lblNewLabel.setIcon(new ImageIcon("img\\newlogo.png"));
 		lblNewLabel.setBounds(130, 0, 191, 131);
 		panel_1.add(lblNewLabel);
 		lblError.setVisible(false);
@@ -300,7 +300,7 @@ public class Login extends ATM {
 		lblBackground = new JLabel("");
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneLogin.add(lblBackground);
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
 		
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

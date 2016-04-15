@@ -475,7 +475,7 @@ public class Withdraw extends ATM {
 		lblCustom.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		
 		JLabel lblBg = new JLabel("");
-		lblBg.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM\\img\\blue.jpg"));
+		lblBg.setIcon(new ImageIcon("img\\blue.jpg"));
 		lblBg.setBounds(0, 0, 784, 411);
 		contentPaneWithdraw.add(lblBg);
 		lblInsufficientFunds.setVisible(false);

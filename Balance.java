@@ -120,7 +120,7 @@ public class Balance extends ATM {
 		textField.setColumns(10);
 		
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneBalance.add(lblBackground);
 	}

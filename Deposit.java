@@ -70,7 +70,22 @@ public class Deposit extends ATM {
 		panel.add(btnDeposit);
 		btnDeposit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!(textField.getText()==null)||!(Integer.parseInt(textField.getText())<0)){
+				int Input = 0;
+				try{
+					Input = Integer.parseInt(textField.getText());
+				}
+				catch(NumberFormatException e1){
+					lblInvalidInput.setVisible(true);
+					ActionListener erase = new ActionListener() {
+						public void actionPerformed(ActionEvent e){
+							lblInvalidInput.setVisible(false);
+						}
+					};
+					Timer error = new Timer(1000,erase);
+					error.start();
+					error.setRepeats(false);
+				}
+				if (!(textField.getText()==null)&&Input>0){
 					int userDeposit = Integer.parseInt(textField.getText());
 					int balance = Integer.parseInt(accountInfo[3]);
 					balance+=userDeposit;
@@ -162,7 +177,7 @@ public class Deposit extends ATM {
 		lblConfirmation.setVisible(false);
 		
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneDeposit.add(lblBackground);
 	}

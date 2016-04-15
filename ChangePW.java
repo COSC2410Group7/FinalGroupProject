@@ -208,7 +208,7 @@ public class ChangePW extends ATM {
 		lblPasswordSuccessfullyChanged.setVisible(false);
 		
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM\\img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneChangePW.add(lblBackground);
 		

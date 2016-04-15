@@ -131,7 +131,7 @@ public class Menu extends ATM{
 		contentPaneMenu.add(lblGreeting);
 		
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Drew\\Desktop\\workspace\\ATM-GroupProject\\img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneMenu.add(lblBackground);
 	}
