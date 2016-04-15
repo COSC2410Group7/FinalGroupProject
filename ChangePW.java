@@ -165,7 +165,7 @@ public class ChangePW extends ATM {
 		passwordFieldNew = new JPasswordField();
 		passwordFieldNew.setBounds(267, 57, 210, 27);
 		panel_1.add(passwordFieldNew);
-		passwordFieldNew.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		passwordFieldNew.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		
 		JLabel lblNewPassword = new JLabel("New Password:");
 		lblNewPassword.setBounds(107, 57, 150, 27);

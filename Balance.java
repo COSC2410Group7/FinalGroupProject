@@ -38,7 +38,7 @@ public class Balance extends ATM {
 		panel.add(btnShowBalance);
 		btnShowBalance.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textField.setText(accountInfo[3]);
+				textField.setText(accountInfo[3] + ".00");
 			}
 		});
 		btnShowBalance.setFont(new Font("Tahoma", Font.PLAIN, 26));
@@ -94,12 +94,12 @@ public class Balance extends ATM {
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		
-		JLabel lblAmount = new JLabel(accountInfo[3]);
+		JLabel lblAmount = new JLabel(accountInfo[3] + ".00");
 		lblAmount.setBounds(153, 5, 217, 28);
 		panel_1.add(lblAmount);
 		lblAmount.setForeground(Color.WHITE);
 		lblAmount.setHorizontalAlignment(SwingConstants.LEFT);
-		lblAmount.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblAmount.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		
 		textField = new JTextField();
 		textField.setEditable(false);

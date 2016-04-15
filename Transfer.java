@@ -154,12 +154,6 @@ public class Transfer extends ATM {
 		textFieldNumber.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		textFieldNumber.setColumns(10);
 		
-		JLabel label = new JLabel("$");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		label.setForeground(Color.WHITE);
-		label.setBounds(220, 10, 21, 28);
-		panel_1.add(label);
-		
 		JLabel lblAmount = new JLabel("Amount:");
 		lblAmount.setBounds(127, 48, 82, 27);
 		panel_1.add(lblAmount);
