@@ -1,5 +1,4 @@
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -26,7 +25,6 @@ public class Transfer extends ATM {
 	private JLabel lblInvalidInput;
 	public Transfer() {
 		contentPaneTransfer = new JPanel();
-		contentPaneTransfer.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneTransfer);
 		contentPaneTransfer.setLayout(null);
 		

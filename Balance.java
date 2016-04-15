@@ -1,5 +1,4 @@
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -17,7 +16,6 @@ public class Balance extends ATM {
 	private JTextField textField;
 	public Balance() {
 		contentPaneBalance = new JPanel();
-		contentPaneBalance.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneBalance);
 		contentPaneBalance.setLayout(null);
 		

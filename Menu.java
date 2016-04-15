@@ -1,5 +1,4 @@
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -13,7 +12,6 @@ public class Menu extends ATM{
 	JPanel contentPaneMenu;
 	public Menu() {
 		contentPaneMenu = new JPanel();
-		contentPaneMenu.setBorder(new EmptyBorder(0,0,0,0));
 		setContentPane(contentPaneMenu);
 		contentPaneMenu.setLayout(null);
 		

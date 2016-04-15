@@ -1,6 +1,5 @@
 import java.lang.String;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -26,7 +25,6 @@ public class Deposit extends ATM {
 	
 	public Deposit() throws NumberFormatException {
 		contentPaneDeposit = new JPanel();
-		contentPaneDeposit.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneDeposit);
 		contentPaneDeposit.setLayout(null);
 		

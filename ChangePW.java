@@ -1,5 +1,4 @@
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -31,7 +30,6 @@ public class ChangePW extends ATM {
 
 	public ChangePW() {
 		contentPaneChangePW = new JPanel();
-		contentPaneChangePW.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneChangePW);
 		contentPaneChangePW.setLayout(null);
 		
