@@ -1,4 +1,3 @@
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
@@ -17,9 +16,6 @@ public class Balance extends ATM {
 	JPanel contentPaneBalance;
 	private JTextField textField;
 	public Balance() {
-		setTitle("Balance");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 800, 450);
 		contentPaneBalance = new JPanel();
 		contentPaneBalance.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneBalance);
@@ -119,7 +115,7 @@ public class Balance extends ATM {
 		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textField, btnShowBalance, btnReturn, lblBalance, panel_1, lblOriginalBalance, lblNew, lblSign, label, lblAmount}));
 		
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon(Balance.class.getResource("/blue.jpg")));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneBalance.add(lblBackground);
 		contentPaneBalance.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textField, btnShowBalance, btnReturn, panel, lblBalance, panel_1, lblOriginalBalance, lblNew, lblSign, label, lblAmount, lblBackground}));

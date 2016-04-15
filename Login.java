@@ -39,7 +39,7 @@ public class Login extends ATM {
 	public Login() {
 		JFrame f = new JFrame();
 		f.setForeground(new Color(0, 153, 204));
-		f.setIconImage(Toolkit.getDefaultToolkit().getImage("img\\blue.jpg"));
+		f.setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/blue.jpg")));
 		f.setTitle("ATM");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setBounds(500, 250, 800, 450);
@@ -296,7 +296,7 @@ public class Login extends ATM {
 		lblYourAccountIs.setVisible(false);
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("img\\newlogo.png"));
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/newlogo.png")));
 		lblNewLabel.setBounds(130, 0, 191, 131);
 		panel_1.add(lblNewLabel);
 		panel_1.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{accountField, passwordField, btnLogin, btnClear, panel_2, lblAccountNumber, lblPassword, lblError, lblYourAccountIs, lblNewLabel}));
@@ -305,7 +305,7 @@ public class Login extends ATM {
 		lblBackground = new JLabel("");
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneLogin.add(lblBackground);
-		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon(Login.class.getResource("/blue.jpg")));
 		contentPaneLogin.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{accountField, passwordField, btnLogin, btnClear, panel_1, panel_2, lblAccountNumber, lblPassword, lblError, lblYourAccountIs, lblNewLabel, lblBackground}));
 		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{accountField, passwordField, btnLogin, btnClear, contentPaneLogin, panel_1, panel_2, lblAccountNumber, lblPassword, lblError, lblYourAccountIs, lblNewLabel, lblBackground}));
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{accountField, passwordField, btnLogin, btnClear, panel, contentPaneLogin, panel_1, panel_2, lblAccountNumber, lblPassword, lblError, lblYourAccountIs, lblNewLabel, lblBackground}));

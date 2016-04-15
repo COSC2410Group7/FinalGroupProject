@@ -1,4 +1,3 @@
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
@@ -18,12 +17,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
-
 public class ChangePW extends ATM {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	JPanel contentPaneChangePW;
 	private JPasswordField passwordFieldCurrent;
@@ -36,9 +30,6 @@ public class ChangePW extends ATM {
 	private JPanel panel_1;
 
 	public ChangePW() {
-		setTitle("Change Password");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 800, 450);
 		contentPaneChangePW = new JPanel();
 		contentPaneChangePW.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneChangePW);
@@ -211,7 +202,7 @@ public class ChangePW extends ATM {
 		lblPasswordSuccessfullyChanged.setVisible(false);
 		
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon(ChangePW.class.getResource("/blue.jpg")));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneChangePW.add(lblBackground);
 		contentPaneChangePW.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{passwordFieldCurrent, passwordFieldNew, passwordFieldConfirmNew, btnOK, button, panel, lblPasswordSuccessfullyChanged, lblInvalidPassword, lblPasswordsNoMatch, panel_1, lblConfrimNew, lblNewPassword, lblCurrentPassword, lblChangePassword, lblBackground}));

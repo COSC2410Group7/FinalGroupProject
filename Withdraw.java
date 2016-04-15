@@ -1,4 +1,3 @@
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
@@ -19,12 +18,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
-
 public class Withdraw extends ATM {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	JPanel contentPaneWithdraw;
 	private JTextField textField;
@@ -33,9 +27,6 @@ public class Withdraw extends ATM {
 	private JLabel lblInvalidInput;
 
 	public Withdraw() {
-		setTitle("Withdraw");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 800, 450);
 		contentPaneWithdraw = new JPanel();
 		contentPaneWithdraw.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneWithdraw);
@@ -423,6 +414,7 @@ public class Withdraw extends ATM {
 					Timer error = new Timer(1000,erase);
 					error.start();
 					error.setRepeats(false);
+					textField.setText("");
 				}
 				
 			
@@ -516,7 +508,7 @@ public class Withdraw extends ATM {
 		darkerPanel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textField, btnWithdrawbutton, lblCustom}));
 		
 		JLabel lblBg = new JLabel("");
-		lblBg.setIcon(new ImageIcon("img\\blue.jpg"));
+		lblBg.setIcon(new ImageIcon(Withdraw.class.getResource("/blue.jpg")));
 		lblBg.setBounds(0, 0, 784, 411);
 		contentPaneWithdraw.add(lblBg);
 		contentPaneWithdraw.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnWith20, btnWith40, btnWith60, btnWith80, btnWith100, btnReturn, lblWithdrawComplete, lblInsufficientFunds, textField, btnWithdrawbutton, lblWithdraw, darkerPanel, lblCustom, lblBg}));

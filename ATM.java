@@ -2,6 +2,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.JFrame;
+
 public class ATM extends JFrame{
 	public ATM() {
 	}

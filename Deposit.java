@@ -1,5 +1,4 @@
 import java.lang.String;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
@@ -18,12 +17,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
-
 public class Deposit extends ATM {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	JPanel contentPaneDeposit;
 	private JTextField textField;
@@ -31,9 +25,6 @@ public class Deposit extends ATM {
 	private JLabel lblInvalidInput;
 	
 	public Deposit() throws NumberFormatException {
-		setTitle("Deposit");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 800, 450);
 		contentPaneDeposit = new JPanel();
 		contentPaneDeposit.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneDeposit);
@@ -180,7 +171,7 @@ public class Deposit extends ATM {
 		lblConfirmation.setVisible(false);
 		
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon(Deposit.class.getResource("/blue.jpg")));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneDeposit.add(lblBackground);
 		contentPaneDeposit.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textField, btnDeposit, btnReturn, panel, lblWithdraw, lblConfirmation, lblInvalidInput, panel_1, lblSign, lblDepositAmount, lblBackground}));

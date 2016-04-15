@@ -1,4 +1,3 @@
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
@@ -17,12 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
-
 public class Transfer extends ATM {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	JPanel contentPaneTransfer;
 	private JTextField textFieldNumber;
@@ -31,9 +25,6 @@ public class Transfer extends ATM {
 	private JLabel lblInsufficientFunds;
 	private JLabel lblInvalidInput;
 	public Transfer() {
-		setTitle("Transfer");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 800, 450);
 		contentPaneTransfer = new JPanel();
 		contentPaneTransfer.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneTransfer);
@@ -145,6 +136,8 @@ public class Transfer extends ATM {
 		panel.add(btnReturn);
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				textFieldNumber.setText("");
+				textFieldAmount.setText("");
 				login.panel.removeAll();
 				login.panel.add(menu.contentPaneMenu);
 				login.panel.revalidate();
@@ -190,7 +183,7 @@ public class Transfer extends ATM {
 		panel_1.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, lblToAccountNumber, lblAmount}));
 		
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
+		lblBackground.setIcon(new ImageIcon(Transfer.class.getResource("/blue.jpg")));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneTransfer.add(lblBackground);
 		
