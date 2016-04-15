@@ -46,6 +46,7 @@ public class Login extends ATM {
 		f.add(CardLayout, BorderLayout.CENTER);
 		f.setResizable(false);
 		f.pack();
+		f.setLocationRelativeTo(null);
 		f.setVisible(true);
 		CardLayout.setLayout(new CardLayout(0, 0));
 		
