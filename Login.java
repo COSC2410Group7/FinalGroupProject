@@ -37,14 +37,16 @@ public class Login extends ATM {
 	private JPanel panel_2;
 	private JLabel lblNewLabel;
 	public Login() {
-		setForeground(new Color(0, 153, 204));
-		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\blue.jpg"));
-		setTitle("ATM");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 250, 800, 450);
+		JFrame f = new JFrame();
+		f.setForeground(new Color(0, 153, 204));
+		f.setIconImage(Toolkit.getDefaultToolkit().getImage("img\\blue.jpg"));
+		f.setTitle("ATM");
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setBounds(500, 250, 800, 450);
 		panel = new JPanel();
 		panel.setBorder(new EmptyBorder(0, 0, 0, 0));
-		setContentPane(panel);
+		f.setContentPane(panel);
+		f.setVisible(true);
 		panel.setLayout(new CardLayout(0, 0));
 		
 		contentPaneLogin = new JPanel();

@@ -37,6 +37,5 @@ public class ATM extends JFrame{
 		menu = new Menu();
 		transfer = new Transfer();
 		withdraw =new Withdraw();
-		login.setVisible(true);
 	}	
 }

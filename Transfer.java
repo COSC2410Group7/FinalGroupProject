@@ -52,13 +52,6 @@ public class Transfer extends ATM {
 		lblTransfer.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTransfer.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
-		textFieldNumber = new JTextField();
-		textFieldNumber.setBounds(244, 84, 204, 28);
-		panel.add(textFieldNumber);
-		textFieldNumber.setHorizontalAlignment(SwingConstants.LEFT);
-		textFieldNumber.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		textFieldNumber.setColumns(10);
-		
 		lblTransferComplete = new JLabel("Transfer Complete.");
 		lblTransferComplete.setBounds(139, 163, 204, 28);
 		panel.add(lblTransferComplete);
@@ -167,6 +160,20 @@ public class Transfer extends ATM {
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
+		JLabel lblToAccountNumber = new JLabel("To Account Number:");
+		lblToAccountNumber.setBounds(10, 11, 200, 27);
+		panel_1.add(lblToAccountNumber);
+		lblToAccountNumber.setForeground(Color.WHITE);
+		lblToAccountNumber.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblToAccountNumber.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		textFieldNumber = new JTextField();
+		textFieldNumber.setBounds(223, 10, 204, 28);
+		panel_1.add(textFieldNumber);
+		textFieldNumber.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldNumber.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		textFieldNumber.setColumns(10);
+		
 		JLabel lblAmount = new JLabel("Amount:");
 		lblAmount.setBounds(127, 48, 82, 27);
 		panel_1.add(lblAmount);
@@ -180,14 +187,12 @@ public class Transfer extends ATM {
 		textFieldAmount.setHorizontalAlignment(SwingConstants.LEFT);
 		textFieldAmount.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		textFieldAmount.setColumns(10);
+		panel_1.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, lblToAccountNumber, lblAmount}));
 		
-		JLabel lblToAccountNumber = new JLabel("To Account Number:");
-		lblToAccountNumber.setBounds(10, 11, 200, 27);
-		panel_1.add(lblToAccountNumber);
-		lblToAccountNumber.setForeground(Color.WHITE);
-		lblToAccountNumber.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblToAccountNumber.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_1.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblToAccountNumber, lblAmount, textFieldAmount}));
+		JLabel lblBackground = new JLabel("");
+		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
+		lblBackground.setBounds(0, 0, 784, 411);
+		contentPaneTransfer.add(lblBackground);
 		
 		lblInsufficientFunds = new JLabel("Insufficient funds.");
 		lblInsufficientFunds.setBounds(151, 163, 180, 29);
@@ -195,14 +200,10 @@ public class Transfer extends ATM {
 		lblInsufficientFunds.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblInsufficientFunds.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInsufficientFunds.setForeground(new Color(255, 0, 0));
-		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, btnTransfer, btnReturn, lblTransfer, lblTransferComplete, lblInvalidInput, panel_1, lblAmount, lblToAccountNumber, lblInsufficientFunds}));
 		lblInsufficientFunds.setVisible(false);
 		lblTransferComplete.setVisible(false);
 		
-		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
-		lblBackground.setBounds(0, 0, 784, 411);
-		contentPaneTransfer.add(lblBackground);
+		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, btnTransfer, btnReturn, lblTransfer, lblTransferComplete, lblInvalidInput, panel_1, lblAmount, lblToAccountNumber, lblInsufficientFunds}));
 		contentPaneTransfer.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, btnTransfer, btnReturn, panel, lblTransfer, lblTransferComplete, lblInvalidInput, panel_1, lblAmount, lblToAccountNumber, lblInsufficientFunds, lblBackground}));
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, btnTransfer, btnReturn, contentPaneTransfer, panel, lblTransfer, lblTransferComplete, lblInvalidInput, panel_1, lblAmount, lblToAccountNumber, lblInsufficientFunds, lblBackground}));
 	}
