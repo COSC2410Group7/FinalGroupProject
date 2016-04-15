@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class Deposit extends ATM {
 
@@ -173,6 +175,7 @@ public class Deposit extends ATM {
 		lblDepositAmount.setForeground(Color.WHITE);
 		lblDepositAmount.setBounds(10, 22, 89, 28);
 		panel_1.add(lblDepositAmount);
+		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textField, btnDeposit, btnReturn, lblWithdraw, lblConfirmation, lblInvalidInput, panel_1, lblSign, lblDepositAmount}));
 		lblInvalidInput.setVisible(false);
 		lblConfirmation.setVisible(false);
 		
@@ -180,5 +183,7 @@ public class Deposit extends ATM {
 		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneDeposit.add(lblBackground);
+		contentPaneDeposit.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textField, btnDeposit, btnReturn, panel, lblWithdraw, lblConfirmation, lblInvalidInput, panel_1, lblSign, lblDepositAmount, lblBackground}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textField, btnDeposit, btnReturn, contentPaneDeposit, panel, lblWithdraw, lblConfirmation, lblInvalidInput, panel_1, lblSign, lblDepositAmount, lblBackground}));
 	}
 }

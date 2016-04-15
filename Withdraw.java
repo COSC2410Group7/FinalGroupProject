@@ -17,6 +17,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class Withdraw extends ATM {
 
@@ -473,11 +475,14 @@ public class Withdraw extends ATM {
 		lblCustom.setForeground(Color.WHITE);
 		lblCustom.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCustom.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		darkerPanel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textField, btnWithdrawbutton, lblCustom}));
 		
 		JLabel lblBg = new JLabel("");
 		lblBg.setIcon(new ImageIcon("img\\blue.jpg"));
 		lblBg.setBounds(0, 0, 784, 411);
 		contentPaneWithdraw.add(lblBg);
+		contentPaneWithdraw.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnWith20, btnWith40, btnWith60, btnWith80, btnWith100, btnReturn, lblWithdrawComplete, lblInsufficientFunds, textField, btnWithdrawbutton, lblWithdraw, darkerPanel, lblCustom, lblBg}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnWith20, btnWith40, btnWith60, btnWith80, btnWith100, btnReturn, lblWithdrawComplete, lblInsufficientFunds, textField, btnWithdrawbutton, contentPaneWithdraw, lblWithdraw, darkerPanel, lblCustom, lblBg}));
 		lblInsufficientFunds.setVisible(false);
 	}
 }

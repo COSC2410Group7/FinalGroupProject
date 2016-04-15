@@ -195,6 +195,7 @@ public class Transfer extends ATM {
 		lblInsufficientFunds.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblInsufficientFunds.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInsufficientFunds.setForeground(new Color(255, 0, 0));
+		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, btnTransfer, btnReturn, lblTransfer, lblTransferComplete, lblInvalidInput, panel_1, lblAmount, lblToAccountNumber, lblInsufficientFunds}));
 		lblInsufficientFunds.setVisible(false);
 		lblTransferComplete.setVisible(false);
 		
@@ -202,5 +203,7 @@ public class Transfer extends ATM {
 		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneTransfer.add(lblBackground);
+		contentPaneTransfer.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, btnTransfer, btnReturn, panel, lblTransfer, lblTransferComplete, lblInvalidInput, panel_1, lblAmount, lblToAccountNumber, lblInsufficientFunds, lblBackground}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textFieldNumber, textFieldAmount, btnTransfer, btnReturn, contentPaneTransfer, panel, lblTransfer, lblTransferComplete, lblInvalidInput, panel_1, lblAmount, lblToAccountNumber, lblInsufficientFunds, lblBackground}));
 	}
 }

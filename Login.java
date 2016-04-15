@@ -21,6 +21,8 @@ import java.io.PrintWriter;
 import java.awt.CardLayout;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 public class Login extends ATM {
 	
 	private static final long serialVersionUID = 1L;
@@ -295,12 +297,16 @@ public class Login extends ATM {
 		lblNewLabel.setIcon(new ImageIcon("img\\newlogo.png"));
 		lblNewLabel.setBounds(130, 0, 191, 131);
 		panel_1.add(lblNewLabel);
+		panel_1.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{accountField, passwordField, btnLogin, btnClear, panel_2, lblAccountNumber, lblPassword, lblError, lblYourAccountIs, lblNewLabel}));
 		lblError.setVisible(false);
 		
 		lblBackground = new JLabel("");
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneLogin.add(lblBackground);
 		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
+		contentPaneLogin.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{accountField, passwordField, btnLogin, btnClear, panel_1, panel_2, lblAccountNumber, lblPassword, lblError, lblYourAccountIs, lblNewLabel, lblBackground}));
+		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{accountField, passwordField, btnLogin, btnClear, contentPaneLogin, panel_1, panel_2, lblAccountNumber, lblPassword, lblError, lblYourAccountIs, lblNewLabel, lblBackground}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{accountField, passwordField, btnLogin, btnClear, panel, contentPaneLogin, panel_1, panel_2, lblAccountNumber, lblPassword, lblError, lblYourAccountIs, lblNewLabel, lblBackground}));
 		
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

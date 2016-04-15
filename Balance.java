@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class Balance extends ATM {
 	/**
@@ -118,10 +120,13 @@ public class Balance extends ATM {
 		textField.setEditable(false);
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		textField.setColumns(10);
+		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textField, btnShowBalance, btnReturn, lblBalance, panel_1, lblOriginalBalance, lblNew, lblSign, label, lblAmount}));
 		
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneBalance.add(lblBackground);
+		contentPaneBalance.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textField, btnShowBalance, btnReturn, panel, lblBalance, panel_1, lblOriginalBalance, lblNew, lblSign, label, lblAmount, lblBackground}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{textField, btnShowBalance, btnReturn, contentPaneBalance, panel, lblBalance, panel_1, lblOriginalBalance, lblNew, lblSign, label, lblAmount, lblBackground}));
 	}
 }

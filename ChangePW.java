@@ -16,6 +16,8 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class ChangePW extends ATM {
 
@@ -203,6 +205,7 @@ public class ChangePW extends ATM {
 		lblChangePassword.setForeground(Color.WHITE);
 		lblChangePassword.setHorizontalAlignment(SwingConstants.CENTER);
 		lblChangePassword.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{passwordFieldCurrent, passwordFieldNew, passwordFieldConfirmNew, btnOK, button, lblPasswordSuccessfullyChanged, lblInvalidPassword, lblPasswordsNoMatch, panel_1, lblConfrimNew, lblNewPassword, lblCurrentPassword, lblChangePassword}));
 		lblPasswordsNoMatch.setVisible(false);
 		lblInvalidPassword.setVisible(false);
 		lblPasswordSuccessfullyChanged.setVisible(false);
@@ -211,6 +214,8 @@ public class ChangePW extends ATM {
 		lblBackground.setIcon(new ImageIcon("img\\blue.jpg"));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneChangePW.add(lblBackground);
+		contentPaneChangePW.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{passwordFieldCurrent, passwordFieldNew, passwordFieldConfirmNew, btnOK, button, panel, lblPasswordSuccessfullyChanged, lblInvalidPassword, lblPasswordsNoMatch, panel_1, lblConfrimNew, lblNewPassword, lblCurrentPassword, lblChangePassword, lblBackground}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{passwordFieldCurrent, passwordFieldNew, passwordFieldConfirmNew, btnOK, button, contentPaneChangePW, panel, lblPasswordSuccessfullyChanged, lblInvalidPassword, lblPasswordsNoMatch, panel_1, lblConfrimNew, lblNewPassword, lblCurrentPassword, lblChangePassword, lblBackground}));
 		
 	}
 }
