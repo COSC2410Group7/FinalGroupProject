@@ -30,7 +30,7 @@ public class ChangePW extends ATM {
 		contentPaneChangePW = new JPanel();
 		setContentPane(contentPaneChangePW);
 		contentPaneChangePW.setLayout(null);
-		
+		 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 99, 147));
 		panel.setBounds(122, 70, 539, 330);

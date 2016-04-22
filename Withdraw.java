@@ -42,8 +42,8 @@ public class Withdraw extends ATM {
 		lblInvalidInput.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblInvalidInput.setVisible(false);
 		
-		lblWithdrawComplete = new JLabel("Withdraw complete");
-		lblWithdrawComplete.setBounds(243, 368, 298, 43);
+		lblWithdrawComplete = new JLabel("Withdrawal complete!");
+		lblWithdrawComplete.setBounds(243, 368, 328, 43);
 		lblWithdrawComplete.setForeground(new Color(0, 204, 0));
 		lblWithdrawComplete.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWithdrawComplete.setFont(new Font("Tahoma", Font.PLAIN, 32));
