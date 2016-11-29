@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+
 public class Transfer extends ATM {
+	
 	private static final long serialVersionUID = 1L;
 	JPanel contentPaneTransfer;
 	private JTextField textFieldNumber;
@@ -21,7 +23,9 @@ public class Transfer extends ATM {
 	private JLabel lblTransferComplete;
 	private JLabel lblInsufficientFunds;
 	private JLabel lblInvalidInput;
+	
 	public Transfer() {
+		
 		contentPaneTransfer = new JPanel();
 		setContentPane(contentPaneTransfer);
 		contentPaneTransfer.setLayout(null);
@@ -59,12 +63,15 @@ public class Transfer extends ATM {
 		btnTransfer.setBounds(67, 192, 162, 71);
 		panel.add(btnTransfer);
 		btnTransfer.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+				
 				try{
 					int userTransfer = Integer.parseInt(textFieldAmount.getText());
 					int balance = Integer.parseInt(accountInfo[3]);
 					balance-=userTransfer;
 					if(balance>0){
+						
 						String convert = new String(Integer.toString(balance));
 						accountInfo[3]=convert;
 						PrintWriter writer;
