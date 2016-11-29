@@ -14,6 +14,7 @@ public class Menu extends ATM {
 	JPanel contentPaneMenu;
 
 	public Menu() {
+
 		contentPaneMenu = new JPanel();
 		setContentPane(contentPaneMenu);
 		contentPaneMenu.setLayout(null);
