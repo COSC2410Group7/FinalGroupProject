@@ -2,9 +2,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.JFrame;
+
 public class ATM extends JFrame{
-	public ATM() {
-	}
+
+	public ATM() { }
+
 	private static final long serialVersionUID = 1L;
 	static String accountInfo[];
 	static String accountPW[];
@@ -16,22 +18,22 @@ public class ATM extends JFrame{
 	public static Menu menu;
 	public static Transfer transfer;
 	public static Withdraw withdraw;
+
 	public static void main(String[] args)throws FileNotFoundException {
+
 		accountInfo = new String[5];
-		//InputStream in = ATM.class.getClassLoader().getResourceAsStream("AccountInformation.txt");
-		//Scanner readFile = new Scanner(in);
 		Scanner readFile = new Scanner(new FileInputStream("AccountInformation.txt"));
 		for(int i=0;i<5;i++)
 			accountInfo[i]=readFile.nextLine();
 		accountPW = new String[2];
 		readFile.close();
-		//in  = ATM.class.getClassLoader().getResourceAsStream("Password.txt");
-		//readFile = new Scanner(in);
+
 		readFile = new Scanner(new FileInputStream("Password.txt"));
 		for (int i=0;i<2;i++)
 			accountPW[i] = readFile.next();
 		Password = accountPW[1].toCharArray();
 		readFile.close();
+
 		balance = new Balance();
 		changePW = new ChangePW();
 		deposit = new Deposit();
@@ -39,5 +41,5 @@ public class ATM extends JFrame{
 		menu = new Menu();
 		transfer = new Transfer();
 		withdraw = new Withdraw();
-	}	
+	}
 }

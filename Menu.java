@@ -37,9 +37,7 @@ public class Menu extends ATM {
 		btnBalance.setForeground(Color.WHITE);
 		btnBalance.setBackground(new Color(0, 51, 102));
 		btnBalance.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent arg0) {
-
 				changePanel(balance.contentPaneBalance);
 			}
 		});
@@ -51,9 +49,7 @@ public class Menu extends ATM {
 		btnTransfer.setForeground(Color.WHITE);
 		btnTransfer.setBackground(new Color(0, 51, 102));
 		btnTransfer.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
-
 				changePanel(transfer.contentPaneTransfer);
 			}
 		});
@@ -65,9 +61,7 @@ public class Menu extends ATM {
 		btnDeposit.setForeground(Color.WHITE);
 		btnDeposit.setBackground(new Color(0, 51, 102));
 		btnDeposit.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
-
 				changePanel(deposit.contentPaneDeposit);
 			}
 		});
@@ -79,9 +73,7 @@ public class Menu extends ATM {
 		btnWithdraw.setBackground(new Color(0, 51, 102));
 		btnWithdraw.setForeground(Color.WHITE);
 		btnWithdraw.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
-
 				changePanel(withdraw.contentPaneWithdraw);
 			}
 		});
@@ -92,9 +84,7 @@ public class Menu extends ATM {
 		panel.add(btnLogout);
 		btnLogout.setForeground(Color.WHITE);
 		btnLogout.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
-
 				changePanel(login.contentPaneLogin);
 			}
 		});
@@ -107,9 +97,7 @@ public class Menu extends ATM {
 		btnChangePW.setVerticalAlignment(SwingConstants.TOP);
 		btnChangePW.setForeground(Color.WHITE);
 		btnChangePW.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
-
 				changePanel(changePW.contentPaneChangePW);
 			}
 		});
