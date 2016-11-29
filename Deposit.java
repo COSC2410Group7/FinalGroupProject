@@ -62,64 +62,7 @@ public class Deposit extends ATM {
 		panel.add(btnDeposit);
 		btnDeposit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int Input = 0;
-				try{
-					Input = Integer.parseInt(textField.getText());
-				}
-				catch(NumberFormatException e1){
-					lblInvalidInput.setVisible(true);
-					ActionListener erase = new ActionListener() {
-						public void actionPerformed(ActionEvent e){
-							lblInvalidInput.setVisible(false);
-						}
-					};
-					Timer error = new Timer(1000,erase);
-					error.start();
-					error.setRepeats(false);
-				}
-				if (!(textField.getText()==null)&&Input>0){
-
-					int userDeposit = Integer.parseInt(textField.getText());
-					int balance = Integer.parseInt(accountInfo[3]);
-					balance+=userDeposit;
-					String convert = new String(Integer.toString(balance));
-					accountInfo[3]=convert;
-					PrintWriter writer;
-					try {
-						writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
-						BufferedWriter bwriter = new BufferedWriter(writer);
-						for(int i=0;i<5;i++){
-							bwriter.write(accountInfo[i]);
-							if(i!=4)
-								bwriter.newLine();
-						}
-						bwriter.close();
-					}
-					catch (IOException e1) {
-						e1.printStackTrace();
-					}
-					lblConfirmation.setVisible(true);
-					ActionListener erase = new ActionListener() {
-						public void actionPerformed(ActionEvent e){
-							lblConfirmation.setVisible(false);
-						}
-					};
-					Timer error = new Timer(1000,erase);
-					error.start();
-					error.setRepeats(false);
-				}
-				else{
-					lblInvalidInput.setVisible(true);
-					ActionListener erase = new ActionListener() {
-						public void actionPerformed(ActionEvent e){
-							lblInvalidInput.setVisible(false);
-						}
-					};
-					Timer error = new Timer(1000,erase);
-					error.start();
-					error.setRepeats(false);
-				}
-				textField.setText("");
+				makeDeposit();
 			}
 		});
 		btnDeposit.setFont(new Font("Tahoma", Font.PLAIN, 35));
@@ -173,5 +116,65 @@ public class Deposit extends ATM {
 		lblBackground.setIcon(new ImageIcon(Deposit.class.getResource("/blue.jpg")));
 		lblBackground.setBounds(0, 0, 784, 411);
 		contentPaneDeposit.add(lblBackground);
+	}
+	public void makeDeposit()	{
+		int Input = 0;
+		try{
+			Input = Integer.parseInt(textField.getText());
+		}
+		catch(NumberFormatException e1){
+			lblInvalidInput.setVisible(true);
+			ActionListener erase = new ActionListener() {
+				public void actionPerformed(ActionEvent e){
+					lblInvalidInput.setVisible(false);
+				}
+			};
+			Timer error = new Timer(1000,erase);
+			error.start();
+			error.setRepeats(false);
+		}
+		if (!(textField.getText()==null)&&Input>0){
+
+			int userDeposit = Integer.parseInt(textField.getText());
+			int balance = Integer.parseInt(accountInfo[3]);
+			balance+=userDeposit;
+			String convert = new String(Integer.toString(balance));
+			accountInfo[3]=convert;
+			PrintWriter writer;
+			try {
+				writer = new PrintWriter(new FileOutputStream("AccountInformation.txt"));
+				BufferedWriter bwriter = new BufferedWriter(writer);
+				for(int i=0;i<5;i++){
+					bwriter.write(accountInfo[i]);
+					if(i!=4)
+						bwriter.newLine();
+				}
+				bwriter.close();
+			}
+			catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			lblConfirmation.setVisible(true);
+			ActionListener erase = new ActionListener() {
+				public void actionPerformed(ActionEvent e){
+					lblConfirmation.setVisible(false);
+				}
+			};
+			Timer error = new Timer(1000,erase);
+			error.start();
+			error.setRepeats(false);
+		}
+		else{
+			lblInvalidInput.setVisible(true);
+			ActionListener erase = new ActionListener() {
+				public void actionPerformed(ActionEvent e){
+					lblInvalidInput.setVisible(false);
+				}
+			};
+			Timer error = new Timer(1000,erase);
+			error.start();
+			error.setRepeats(false);
+		}
+		textField.setText("");
 	}
 }
