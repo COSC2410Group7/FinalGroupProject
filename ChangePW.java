@@ -67,6 +67,7 @@ public class ChangePW extends ATM {
 		btnOK.setForeground(Color.WHITE);
 		btnOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				if (Arrays.equals(passwordFieldCurrent.getPassword(),Password)){
 					if(Arrays.equals(passwordFieldNew.getPassword(), passwordFieldConfirmNew.getPassword())){
 						try {
