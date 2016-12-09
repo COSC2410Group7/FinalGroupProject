@@ -91,7 +91,6 @@ public class Withdraw extends ATM {
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		textField.setHorizontalAlignment(SwingConstants.LEFT);
 		textField.addKeyListener(new KeyAdapter() {
-			@Override
 			public void keyPressed(KeyEvent arg0) {
 				if (arg0.getKeyCode() == KeyEvent.VK_ENTER){
 					tryWithdraw(accountInfo);
@@ -194,6 +193,7 @@ public class Withdraw extends ATM {
 	public void tryWithdraw(String[] accountInfo)	{
 
 		int userWithdraw = 0;
+		
 		try{
 			userWithdraw = Integer.parseInt(textField.getText());
 			int balance = Integer.parseInt(accountInfo[3]);
