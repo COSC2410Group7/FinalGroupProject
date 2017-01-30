@@ -15,11 +15,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 public class Transfer extends ATM {
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> eb3d7e60a4673a7c93fc2e8e83927ee99e6ddc57
 	private static final long serialVersionUID = 1L;
 	JPanel contentPaneTransfer;
 	private JTextField textFieldNumber;
@@ -27,15 +23,9 @@ public class Transfer extends ATM {
 	private JLabel lblTransferComplete;
 	private JLabel lblInsufficientFunds;
 	private JLabel lblInvalidInput;
-<<<<<<< HEAD
 
 	public Transfer() {
 
-=======
-	
-	public Transfer() {
-		
->>>>>>> eb3d7e60a4673a7c93fc2e8e83927ee99e6ddc57
 		contentPaneTransfer = new JPanel();
 		setContentPane(contentPaneTransfer);
 		contentPaneTransfer.setLayout(null);
@@ -73,25 +63,15 @@ public class Transfer extends ATM {
 		btnTransfer.setBounds(67, 192, 162, 71);
 		panel.add(btnTransfer);
 		btnTransfer.addActionListener(new ActionListener() {
-<<<<<<< HEAD
 
-			public void actionPerformed(ActionEvent e) {
-
-=======
-			
 			public void actionPerformed(ActionEvent e) {
 				
->>>>>>> eb3d7e60a4673a7c93fc2e8e83927ee99e6ddc57
 				try{
 					int userTransfer = Integer.parseInt(textFieldAmount.getText());
 					int balance = Integer.parseInt(accountInfo[3]);
 					balance-=userTransfer;
 					if(balance>0){
-<<<<<<< HEAD
 
-=======
-						
->>>>>>> eb3d7e60a4673a7c93fc2e8e83927ee99e6ddc57
 						String convert = new String(Integer.toString(balance));
 						accountInfo[3]=convert;
 						PrintWriter writer;
